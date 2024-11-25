@@ -1,11 +1,11 @@
-import { ButtonRound } from "../../enums";
+import { BorderRound } from "../../enums";
 import { ButtonProps } from "../../models";
 
-export default function Button({
+function Button({
   label,
   rounded,
   width,
-  customStyle = "",
+  customStyles = "",
   backgroundColor,
   color,
   onClick,
@@ -15,7 +15,9 @@ export default function Button({
   return (
     <>
       <button
-        className={`flex items-center gap-2 justify-center px-4 py-2 ${backgroundColor} ${color} ${ButtonRound[rounded]} ${width} ${customStyle} text-sm  transition-all sm:text-base `}
+        className={`flex items-center gap-2 justify-center px-4 py-2 ${backgroundColor} ${color} ${
+          BorderRound[rounded as keyof typeof BorderRound]
+        } ${width} ${customStyles} text-sm  transition-all sm:text-base   `}
         onClick={onClick}
       >
         {label}
@@ -24,3 +26,4 @@ export default function Button({
     </>
   );
 }
+export default Button;
