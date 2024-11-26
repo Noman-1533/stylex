@@ -18,3 +18,6 @@ export enum TextVerticalAlignment {
   MIDDLE = "top-1/2 transform -translate-y-1/2",
   BOTTOM = "bottom-0",
 }
+export enum QueryTime {
+  STALE = 1000 * 60 * 60 * 4,
+}

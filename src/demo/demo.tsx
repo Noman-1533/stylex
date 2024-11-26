@@ -1,6 +1,6 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, ProductCarousel, Title } from "../feature";
+import { Button, Card, ProductCarousel, Search, Title } from "../feature";
 import Price from "../feature/shared/components/price-component/price.component";
 import Rating from "../feature/shared/components/rating-component/rating.component";
 import { CustomImage } from "../feature";
@@ -174,6 +174,10 @@ export default function Demo() {
             buttonText="Show more"
             onClickButton={() => console.log("show more clicked")}
           />
+        </div>
+
+        <div>
+          <Search />
         </div>
       </div>
     </>
