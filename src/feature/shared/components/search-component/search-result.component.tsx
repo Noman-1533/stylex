@@ -39,19 +39,18 @@ export default function SearchResult() {
   }
   return (
     <>
-      <div className="flex flex-row flex-wrap gap-3">
+      <div className="flex flex-row flex-wrap gap-3 justify-evenly">
         {response?.products.map((product) => {
           return (
-            <div key={product.id}>
-              <Card
-                id={product.id}
-                title={product.title}
-                rating={product.rating}
-                price={product.price}
-                discount={product.discountPercentage}
-                imageURL={product.thumbnail}
-              />
-            </div>
+            <Card
+              key={product.id}
+              id={product.id}
+              title={product.title}
+              rating={product.rating}
+              price={product.price}
+              discount={product.discountPercentage}
+              imageURL={product.thumbnail}
+            />
           );
         })}
       </div>

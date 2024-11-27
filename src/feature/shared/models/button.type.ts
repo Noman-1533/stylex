@@ -7,5 +7,6 @@ export interface ButtonProps extends React.PropsWithChildren {
   backgroundColor?: string;
   color?: string;
   customStyles?: string;
+  extraClasses?: string;
   onClick: () => void;
 }

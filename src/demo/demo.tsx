@@ -4,6 +4,8 @@ import { Button, Card, ProductCarousel, Search, Title } from "../feature";
 import Price from "../feature/shared/components/price-component/price.component";
 import Rating from "../feature/shared/components/rating-component/rating.component";
 import { CustomImage } from "../feature";
+import ProductCounter from "../feature/shared/components/number-of-product-component/number-of-product.component";
+import SiteIntro from "../feature/home/components/site-intro/site-intro.component";
 
 export default function Demo() {
   const carouselData = [
@@ -105,6 +107,12 @@ export default function Demo() {
   return (
     <>
       <div className="ml-5 mt-6">
+        <div className="mb-2">
+          <SiteIntro />
+        </div>
+        <div className="mb-2">
+          <ProductCounter />
+        </div>
         <div>
           <Button
             label="View all"

@@ -16,7 +16,7 @@ export default function Card({
     <>
       <div
         className={`relative ${customStyles} group bg-white p-4 
-        ${/*shadow-md*/ ""} rounded-lg`}
+        ${/*shadow-md*/ ""} rounded-lg w-52 md:w-64 lg:w-80 `}
       >
         {/* Image Section */}
         <div className="relative">
@@ -30,13 +30,13 @@ export default function Card({
           />
 
           {/* Add to Cart Button (visible on large screens on hover) */}
-          <div className="absolute bottom-0 left-0   opacity-0 group-hover:opacity-100 transition-opacity duration-300 lg:block hidden w-48 md:w-60 lg:w-72">
+          <div className="absolute bottom-0 left-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300 lg:inline-block hidden w-48 md:w-60 lg:w-72">
             <Button
               width="w-full"
               label="Add to Cart"
               backgroundColor="bg-black"
               color="text-white"
-              rounded="MD"
+              rounded="LG"
               customStyles="px-6 py-2"
               onClick={() => onClick(`from cart ${id}`)}
             >
@@ -51,7 +51,7 @@ export default function Card({
               label="Add to Cart"
               backgroundColor="bg-black"
               color="text-white"
-              rounded="MD"
+              rounded="LG"
               customStyles="w-full px-4 py-2"
               onClick={() => onClick(id)}
             >

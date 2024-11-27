@@ -10,6 +10,7 @@ function Button({
   color,
   onClick,
   children,
+  extraClasses = "",
 }: ButtonProps) {
   // return <button className="bg-black text-white ">Button</button>;
   return (
@@ -17,7 +18,7 @@ function Button({
       <button
         className={`flex items-center gap-2 justify-center px-4 py-2 ${backgroundColor} ${color} ${
           BorderRound[rounded as keyof typeof BorderRound]
-        } ${width} ${customStyles} text-sm  transition-all sm:text-base   `}
+        } ${width} ${customStyles} text-sm  transition-all sm:text-base  ${extraClasses} `}
         onClick={onClick}
       >
         {label}
