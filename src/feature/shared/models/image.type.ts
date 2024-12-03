@@ -10,11 +10,12 @@ export interface ImageProps extends React.PropsWithChildren {
   size: string;
   rounded?: keyof typeof BorderRound;
   cursor?: string;
-  customStyles?: string;
+  extraClasses?: string;
   childrenXPosition?: keyof typeof TextHorizontalAlignment;
   childrenYPosition?: keyof typeof TextVerticalAlignment;
   childTextColor?: string;
   childBackground?: string;
+  childTextSize?: string;
 
   onClick?: () => void;
 }

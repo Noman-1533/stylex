@@ -12,6 +12,7 @@ import ShimmerPageLoader, {
   ShimmerContentLoader,
   ShimmerImageLoader,
 } from "./shimmer-effect/shimmer-effect.component";
+import Slider from "./slider/slider.component";
 import Title from "./title-component/title.component";
 export {
   Button,
@@ -27,5 +28,6 @@ export {
   ShimmerContentLoader,
   ShimmerImageLoader,
   ShimmerPageLoader,
+  Slider,
   Title,
 };

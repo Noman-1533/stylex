@@ -9,33 +9,34 @@ import {
 import { ImageProps } from "../../models/image.type";
 import { useState } from "react";
 
-export default function Image({
+export default function CustomImage({
   imageURL,
   altText = "",
   size,
   rounded = "SM",
   cursor = "",
-  customStyles,
+  extraClasses,
   childrenXPosition = "LEFT",
   childrenYPosition = "TOP",
   childTextColor = "",
   childBackground = "",
+  childTextSize,
   onClick,
   children,
 }: ImageProps) {
   const [loading, setLoading] = useState(true);
 
   return (
-    <div className={`relative inline-block ${cursor}`} onClick={onClick}>
+    <div className={`relative  ${cursor} ${extraClasses}`} onClick={onClick}>
       {/* Children container */}
       <div
-        className={`absolute ${TextVerticalAlignment[childrenYPosition]} ${TextHorizontalAlignment[childrenXPosition]} p-2 m-2 ${childBackground} ${childTextColor} rounded z-10 pointer-events-none`}
+        className={`absolute ${TextVerticalAlignment[childrenYPosition]} ${TextHorizontalAlignment[childrenXPosition]} p-2 m-2 ${childBackground} ${childTextColor} rounded z-10 pointer-events-none ${childTextSize}`}
       >
         {children}
       </div>
 
       <div
-        className={`relative ${size} ${BorderRound[rounded]} ${customStyles}`}
+        className={`relative ${size} ${BorderRound[rounded]} w-full`}
         style={{ overflow: "hidden" }}
       >
         {loading && (
@@ -52,6 +53,7 @@ export default function Image({
           effect={imageURL.startsWith("http") ? "opacity" : undefined}
           onLoad={() => setLoading(false)}
           style={{ zIndex: 1 }}
+          wrapperClassName="w-full"
         />
       </div>
     </div>

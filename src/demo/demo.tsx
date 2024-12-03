@@ -1,11 +1,20 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Card, ProductCarousel, Search, Title } from "../feature";
+import {
+  Button,
+  Card,
+  ProductCarousel,
+  Search,
+  Slider,
+  Title,
+} from "../feature";
 import Price from "../feature/shared/components/price-component/price.component";
 import Rating from "../feature/shared/components/rating-component/rating.component";
 import { CustomImage } from "../feature";
 import ProductCounter from "../feature/shared/components/number-of-product-component/number-of-product.component";
 import SiteIntro from "../feature/home/components/site-intro/site-intro.component";
+import CategoryGallery from "../feature/home/components/category-gallery/cattegory-gallery.component";
+import { SingleCategoryGalleryItem } from "../feature/home";
 
 export default function Demo() {
   const carouselData = [
@@ -104,9 +113,43 @@ export default function Demo() {
   const handleClick = () => {
     alert("clicked");
   };
+
+  const categoryItem: SingleCategoryGalleryItem[] = [
+    {
+      name: "Shoes",
+      image:
+        "https://th.bing.com/th/id/OIP.LClaEPOl4xC5aUOEqCf_sQHaKw?rs=1&pid=ImgDetMain",
+      url: "https://dummyjson.com/products/category/mens-shoes",
+    },
+    {
+      name: "Shirts",
+      image:
+        "https://th.bing.com/th/id/OIP.LClaEPOl4xC5aUOEqCf_sQHaKw?rs=1&pid=ImgDetMain",
+      url: "https://dummyjson.com/products/category/mens-shirts",
+    },
+    {
+      name: "Watches",
+      image:
+        "https://th.bing.com/th/id/OIP.LClaEPOl4xC5aUOEqCf_sQHaKw?rs=1&pid=ImgDetMain",
+      url: "https://dummyjson.com/products/category/men-watches",
+    },
+    {
+      name: "Beauty",
+      image:
+        "https://th.bing.com/th/id/OIP.LClaEPOl4xC5aUOEqCf_sQHaKw?rs=1&pid=ImgDetMain",
+      url: "https://dummyjson.com/products/category/beauty",
+    },
+  ];
   return (
     <>
-      <div className="ml-5 mt-6">
+      <div className="ml-0 mt-6">
+        <div>
+          <Slider />
+        </div>
+        <div>
+          <CategoryGallery galleryItems={categoryItem} />
+        </div>
+
         <div className="mb-2">
           <SiteIntro />
         </div>

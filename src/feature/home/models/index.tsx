@@ -1,1 +1,1 @@
-export * from "./button.type";
+export * from "./cattegory-gallery.type";
