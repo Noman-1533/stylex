@@ -1,4 +1,4 @@
-import { Slider } from "../feature";
+import Slider from "../slider/slider.component";
 
 export default function Demo() {
   return (
