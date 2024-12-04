@@ -1,0 +1,120 @@
+/* Swiper container styling */
+.swiper {
+  width: 97vw;
+  height: 44rem;
+}
+
+/* Styling for individual swiper slides */
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 97vw;
+  height: 44rem;
+  object-fit: cover;
+}
+
+/* Center the swiper container */
+.swiper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Slider container for positioning navigation buttons */
+.slider-container {
+  position: relative;
+}
+
+/* Custom navigation buttons styling */
+.custom-prev,
+.custom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20; /* Ensure navigation buttons are above other elements */
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: 1px solid white;
+  width: 35px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 15px;
+
+}
+
+.custom-next:hover, .custom-prev:hover{border: none;}
+
+.custom-prev {
+  left: 2rem;
+}
+
+.custom-next {
+  right: 2rem;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Styling for the explore button */
+.btn-explore {
+  background-color: #3a3a3a;
+  position: absolute;
+  bottom: 4rem;
+  left: 2.5rem;
+  color: white;
+  padding: 10px;
+  opacity: 0.9;
+  border-radius: 13px;
+  width: 12rem;
+}
+.btn-explore:hover{
+  background-color: #001D4C;
+}
+
+/* Pagination styling to ensure it's in the right-bottom corner */
+.mySwiper .swiper-pagination {
+  position: absolute;
+  bottom: 20px; 
+  /* right: 0px;   */
+  z-index: 15;
+  color: white; 
+}
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+  position: absolute;
+  background-color: #A2ABB0;
+  width: 6rem;
+  right: 4rem;
+  padding: 0.5rem;
+  opacity:0.9 ;
+  gap:0.25rem;
+  border-radius: 12px;
+
+  left:auto;
+}
+@media (max-width:768px){
+  .btn-explore{
+    width:18rem;
+    bottom:4rem
+  }
+  .swiper-slide {
+    height: 42rem;
+  }
+  .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+    left:40%;
+    right:auto;
+  }
+}
