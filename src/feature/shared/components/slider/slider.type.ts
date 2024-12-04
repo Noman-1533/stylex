@@ -1,4 +1,5 @@
 export interface SliderData {
+  id: string;
   imageUrl: string;
   imageAlt: string;
   title: string;
@@ -7,6 +8,5 @@ export interface SliderData {
   displayOrder: number;
   itemType: string;
   deviceType: string;
-  id: string;
   createdAt: string;
 }

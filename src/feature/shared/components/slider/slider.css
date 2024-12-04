@@ -1,10 +1,8 @@
-/* Swiper container styling */
 .swiper {
   width: 97vw;
   height: 44rem;
 }
 
-/* Styling for individual swiper slides */
 .swiper-slide {
   text-align: center;
   font-size: 18px;
@@ -22,24 +20,21 @@
   object-fit: cover;
 }
 
-/* Center the swiper container */
 .swiper {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Slider container for positioning navigation buttons */
 .slider-container {
   position: relative;
 }
 
-/* Custom navigation buttons styling */
 .custom-prev,
 .custom-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 20; /* Ensure navigation buttons are above other elements */
+  z-index: 20; 
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: 1px solid white;
@@ -69,7 +64,6 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Styling for the explore button */
 .btn-explore {
   background-color: #3a3a3a;
   position: absolute;
@@ -85,11 +79,9 @@
   background-color: #001D4C;
 }
 
-/* Pagination styling to ensure it's in the right-bottom corner */
 .mySwiper .swiper-pagination {
   position: absolute;
   bottom: 20px; 
-  /* right: 0px;   */
   z-index: 15;
   color: white; 
 }
@@ -102,7 +94,6 @@
   opacity:0.9 ;
   gap:0.25rem;
   border-radius: 12px;
-
   left:auto;
 }
 @media (max-width:768px){
