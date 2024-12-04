@@ -1,4 +1,4 @@
-import apiClient from "../../api/api-client";
+import apiClient from "./api-client";
 import { SliderData } from "./slider.type";
 
 export const getSliderData = async () => {
