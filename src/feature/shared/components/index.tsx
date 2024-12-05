@@ -1,6 +1,7 @@
 import Button from "./button-component/button.component";
 import Card from "./card-component/card.component";
 import CustomImage from "./image-component/image.component";
+import Divider from "./divider/divider.component";
 import Price from "./price-component/price.component";
 import ProductCarousel from "./product-carousel-component/product-carousel.component";
 import ProductCounter from "./number-of-product-component/number-of-product.component";
@@ -18,6 +19,7 @@ export {
   Button,
   Card,
   CustomImage,
+  Divider,
   Price,
   ProductCarousel,
   ProductCounter,

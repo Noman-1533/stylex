@@ -6,13 +6,19 @@ import {
 
 import { RatingProps } from "../../models";
 
-export default function Rating({ rating, maxRating }: RatingProps) {
+export default function Rating({
+  rating,
+  maxRating,
+  extraClasses,
+}: RatingProps) {
   // Generate filled stars
   const fullStars = Array.from({ length: Math.floor(rating) }, (_, index) => (
     <FontAwesomeIcon
       key={`full-${index}`}
       icon={solidStar}
-      className="text-yellow-400 text-sm md:text-base lg:text-lg"
+      className={`text-yellow-400  ${
+        extraClasses ? extraClasses : "text-sm md:text-base lg:text-lg"
+      }`}
     />
   ));
 
@@ -22,7 +28,9 @@ export default function Rating({ rating, maxRating }: RatingProps) {
     <FontAwesomeIcon
       key="half"
       icon={halfStar}
-      className="text-yellow-400 text-sm md:text-base lg:text-lg"
+      className={`text-yellow-400  ${
+        extraClasses ? extraClasses : "text-sm md:text-base lg:text-lg"
+      }`}
     />
   );
 
@@ -36,7 +44,7 @@ export default function Rating({ rating, maxRating }: RatingProps) {
 
       {/* Rating Text */}
       <div className="flex items-end text-sm md:text-base lg:text-lg text-gray-800">
-        <span>{rating}/</span>
+        <span>{rating.toFixed(1)}/</span>
         <span className="text-gray-500">{maxRating}</span>
       </div>
     </div>

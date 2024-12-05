@@ -16,6 +16,7 @@ export interface ImageProps extends React.PropsWithChildren {
   childTextColor?: string;
   childBackground?: string;
   childTextSize?: string;
+  isLoading?: boolean;
 
   onClick?: () => void;
 }

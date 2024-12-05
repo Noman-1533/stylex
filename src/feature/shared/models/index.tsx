@@ -1,5 +1,6 @@
 export * from "./button.type";
 export * from "./card.type";
+export * from "./divider.type";
 export * from "./image.type";
 export * from "./price.type";
 export * from "./product-carousel.type";

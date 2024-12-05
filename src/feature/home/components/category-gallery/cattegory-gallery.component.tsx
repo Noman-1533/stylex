@@ -57,6 +57,7 @@ export default function CategoryGallery({
       >
         {galleryItems.map((item, index) => (
           <div
+            key={index}
             className={`
             ${index === 1 || index === 2 ? "lg:col-span-2" : "col-span-1"}
             w-full

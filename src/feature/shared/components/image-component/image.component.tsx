@@ -21,10 +21,11 @@ export default function CustomImage({
   childTextColor = "",
   childBackground = "",
   childTextSize,
+  isLoading = true,
   onClick,
   children,
 }: ImageProps) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(isLoading);
 
   return (
     <div className={`relative  ${cursor} ${extraClasses}`} onClick={onClick}>
@@ -36,7 +37,7 @@ export default function CustomImage({
       </div>
 
       <div
-        className={`relative ${size} ${BorderRound[rounded]} w-full`}
+        className={`relative ${size} ${BorderRound[rounded]} `}
         style={{ overflow: "hidden" }}
       >
         {loading && (

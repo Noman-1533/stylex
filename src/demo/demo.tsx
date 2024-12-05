@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Button,
   Card,
+  Divider,
   ProductCarousel,
   Search,
   Slider,
@@ -15,6 +16,7 @@ import ProductCounter from "../feature/shared/components/number-of-product-compo
 import SiteIntro from "../feature/home/components/site-intro/site-intro.component";
 import CategoryGallery from "../feature/home/components/category-gallery/cattegory-gallery.component";
 import { SingleCategoryGalleryItem } from "../feature/home";
+import { ProductDetails } from "../feature/product-details";
 
 export default function Demo() {
   const carouselData = [
@@ -143,6 +145,13 @@ export default function Demo() {
   return (
     <>
       <div className="ml-0 mt-6">
+        <div>
+          <ProductDetails />
+        </div>
+        <div>
+          <Divider width="w-4/5" />
+        </div>
+
         <div>
           <Slider />
         </div>

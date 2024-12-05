@@ -1,6 +1,10 @@
 import { PriceProps } from "../../models";
 
-export default function Price({ price, discount = 0 }: PriceProps) {
+export default function Price({
+  price,
+  discount = 0,
+  extraClasses,
+}: PriceProps) {
   const calculateDiscount = (price: number, discount: number): number => {
     return (price * discount) / 100;
   };
@@ -11,17 +15,19 @@ export default function Price({ price, discount = 0 }: PriceProps) {
 
   return (
     <>
-      <div className="flex flex-row gap-2  sm:items-center md:gap-3 text-xl  lg:text-2xl">
+      <div
+        className={`flex flex-row gap-2  sm:items-center md:gap-3 ${
+          extraClasses ? extraClasses : "text-xl  lg:text-2xl"
+        } `}
+      >
         {/* New Price */}
-        <span className="font-bold text-xl   lg:text-2xl ">
-          ${newPrice.toFixed(2)}
-        </span>
+        <span className="font-bold">${newPrice.toFixed(2)}</span>
 
         {/* Discount and Original Price */}
         {discount > 0 && (
           <div className="flex flex-row  sm:items-center gap-2 ">
             {/* Original Price */}
-            <del className="text-gray-400 text-xl  lg:text-2xl">
+            <del className="text-gray-400 ">
               <b>${price.toFixed(2)}</b>
             </del>
             {/* Discount Badge */}
