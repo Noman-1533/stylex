@@ -12,6 +12,7 @@ import ShimmerPageLoader, {
   ShimmerCardLoader,
   ShimmerContentLoader,
   ShimmerImageLoader,
+  ShimmerCarouselLoader,
 } from "./shimmer-effect/shimmer-effect.component";
 import Slider from "./slider/slider.component";
 import Title from "./title-component/title.component";
@@ -28,6 +29,7 @@ export {
   SearchResult,
   ShimmerCardLoader,
   ShimmerContentLoader,
+  ShimmerCarouselLoader,
   ShimmerImageLoader,
   ShimmerPageLoader,
   Slider,

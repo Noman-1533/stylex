@@ -46,3 +46,13 @@ export function ShimmerCardLoader() {
     </>
   );
 }
+export function ShimmerCarouselLoader() {
+  const dummyArray = new Array(4).fill(0);
+  return (
+    <div className="flex flex-wrap gap-4">
+      {dummyArray.map((val, index) => (
+        <ShimmerCardLoader key={val + index} />
+      ))}
+    </div>
+  );
+}

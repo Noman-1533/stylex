@@ -2,6 +2,7 @@ import { CustomImage, Price, Rating, Title, Button } from "..";
 import { CardProps } from "../../models/card.type";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 export default function Card({
   id,
   title,
@@ -12,11 +13,15 @@ export default function Card({
   customStyles = "",
   onClick = (id: string) => console.log(id),
 }: CardProps) {
+  const navigate = useNavigate();
+  const handleDetailsClick = (id: string) => {
+    navigate(`/details/${id}`);
+  };
   return (
     <>
       <div
         className={`relative ${customStyles} group bg-white p-4 
-        ${/*shadow-md*/ ""} rounded-lg w-52 md:w-64 lg:w-80 `}
+        ${/*shadow-md*/ ""} rounded-lg w-48 md:w-72 lg:w-80 `}
       >
         {/* Image Section */}
         <div className="relative">
@@ -25,7 +30,7 @@ export default function Card({
             size="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72"
             altText="Product Image"
             rounded="LG"
-            onClick={() => onClick(id)}
+            onClick={() => handleDetailsClick(id)}
             cursor="cursor-pointer"
           />
 
@@ -64,16 +69,14 @@ export default function Card({
         <Title>
           <a
             className="cursor-pointer font-semibold text-md md:text-lg lg:text-xl mt-2 block"
-            onClick={() => onClick(id)}
+            onClick={() => handleDetailsClick(id)}
           >
             {title}
           </a>
         </Title>
 
-        {/* Rating */}
         <Rating rating={rating as number} maxRating={5} />
 
-        {/* Price */}
         <Price price={price as number} discount={discount} />
       </div>
     </>

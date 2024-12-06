@@ -16,23 +16,19 @@ export default function Price({
   return (
     <>
       <div
-        className={`flex flex-row gap-2  sm:items-center md:gap-3 ${
-          extraClasses ? extraClasses : "text-xl  lg:text-2xl"
+        className={`flex flex-row gap-1  sm:items-center md:gap-3 ${
+          extraClasses ? extraClasses : "text-base md:text-lg  lg:text-2xl"
         } `}
       >
-        {/* New Price */}
         <span className="font-bold">${newPrice.toFixed(2)}</span>
 
-        {/* Discount and Original Price */}
         {discount > 0 && (
-          <div className="flex flex-row  sm:items-center gap-2 ">
-            {/* Original Price */}
+          <div className="flex flex-row  sm:items-start gap-1 ">
             <del className="text-gray-400 ">
               <b>${price.toFixed(2)}</b>
             </del>
-            {/* Discount Badge */}
-            <span className="bg-red-100 text-[#FA2A3B] px-1 py-1 md:px-2 lg:px-3 rounded-full text-xs md:text-sm lg:text-md font-semibold">
-              -{discount}%
+            <span className="bg-red-100 text-[#FA2A3B]  px-0.5 py-2 md:px-2 lg:px-3 rounded-full text-xs md:text-sm lg:text-md md:font-semibold">
+              -{(Math.round(discount * 100) / 100).toFixed(1)}%
             </span>
           </div>
         )}

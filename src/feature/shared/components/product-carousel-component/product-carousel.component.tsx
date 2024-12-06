@@ -20,7 +20,7 @@ export default function ProductCarousel({
         >
           {carouselTitle}
         </Title>
-        <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-1 justify-evenly">
+        <div className="flex flex-wrap  md:gap-3 lg:gap-1 justify-evenly">
           {products.slice(0, 4).map((product) => {
             return (
               <Card

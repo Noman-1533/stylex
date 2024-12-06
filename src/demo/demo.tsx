@@ -16,7 +16,9 @@ import ProductCounter from "../feature/shared/components/number-of-product-compo
 import SiteIntro from "../feature/home/components/site-intro/site-intro.component";
 import CategoryGallery from "../feature/home/components/category-gallery/cattegory-gallery.component";
 import { SingleCategoryGalleryItem } from "../feature/home";
-import { ProductDetails } from "../feature/product-details";
+import { ExpansionPanel } from "../feature/product-category";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+// import { ProductDetails } from "../feature/product-details";
 
 export default function Demo() {
   const carouselData = [
@@ -145,8 +147,14 @@ export default function Demo() {
   return (
     <>
       <div className="ml-0 mt-6">
-        <div>
+        {/* <div>
           <ProductDetails />
+        </div> */}
+        <div>
+          <ExpansionPanel
+            toggleIcon={<FaAngleDown />}
+            nonToggleIcon={<FaAngleUp />}
+          />
         </div>
         <div>
           <Divider width="w-4/5" />

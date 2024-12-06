@@ -5,12 +5,7 @@ export default function ImageGallery({ images }: { images: string[] }) {
   const [selectedImage, setSelectedImage] = useState<number>(0);
   return (
     <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] md:grid-rows-[1fr] gap-4 md:gap-6 lg:gap-8 p-4">
-      <div className="rounded-lg overflow-hidden border border-gray-200 md:col-start-2 md:row-start-1 w-full md:w-72 lg:w-[30rem]">
-        <CustomImage
-          imageURL={images[selectedImage]}
-          size="w-full  object-cover"
-        />
-      </div>
+      <MainImage image={images[selectedImage]} />
       <div className="flex flex-row md:flex-col gap-4 md:gap-6 justify-center md:justify-start md:col-start-1 md:row-start-1">
         {images.map((image, index) => (
           <CustomImage
@@ -25,6 +20,13 @@ export default function ImageGallery({ images }: { images: string[] }) {
           />
         ))}
       </div>
+    </div>
+  );
+}
+function MainImage({ image }: { image: string }) {
+  return (
+    <div className="rounded-lg border border-gray-200 md:col-start-2 md:row-start-1 w-full  md:w-72 lg:w-[30rem]">
+      <CustomImage imageURL={image} size="w-full h-[34rem]" />
     </div>
   );
 }

@@ -28,7 +28,7 @@ export default function CustomImage({
   const [loading, setLoading] = useState(isLoading);
 
   return (
-    <div className={`relative  ${cursor} ${extraClasses}`} onClick={onClick}>
+    <div className={`relative ${cursor} ${extraClasses}`} onClick={onClick}>
       {/* Children container */}
       <div
         className={`absolute ${TextVerticalAlignment[childrenYPosition]} ${TextHorizontalAlignment[childrenXPosition]} p-2 m-2 ${childBackground} ${childTextColor} rounded z-10 pointer-events-none ${childTextSize}`}
@@ -37,7 +37,7 @@ export default function CustomImage({
       </div>
 
       <div
-        className={`relative ${size} ${BorderRound[rounded]} `}
+        className={`relative ${size} ${BorderRound[rounded]}`}
         style={{ overflow: "hidden" }}
       >
         {loading && (
@@ -50,7 +50,7 @@ export default function CustomImage({
         <LazyLoadImage
           src={imageURL}
           alt={altText}
-          className={`w-full h-full ${BorderRound[rounded]}`}
+          className={`w-full h-full max-h-[34rem] object-contain ${BorderRound[rounded]}`}
           effect={imageURL.startsWith("http") ? "opacity" : undefined}
           onLoad={() => setLoading(false)}
           style={{ zIndex: 1 }}
