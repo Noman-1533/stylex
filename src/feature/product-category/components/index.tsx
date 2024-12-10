@@ -1,2 +1,3 @@
 import ExpansionPanel from "./expansion-panel/expansion-panel.component";
-export { ExpansionPanel };
+import DoubleRangeSlider from "./range-slider/range-slider.component";
+export { ExpansionPanel, DoubleRangeSlider };

@@ -39,31 +39,55 @@ export default function Slider() {
     }
   };
 
-  function NavButton() {
-    return (
-      <>
-        <button
-          ref={prevBtnRef}
-          className="custom-prev"
-          onClick={() => swiperInstance?.slidePrev()}
-        >
-          <FontAwesomeIcon icon={faAngleLeft} />
-        </button>
-        <button
-          ref={nextBtnRef}
-          className="custom-next"
-          onClick={() => {
-            swiperInstance?.slideNext();
-          }}
-        >
-          <FontAwesomeIcon icon={faAngleRight} />
-        </button>
-      </>
-    );
-  }
+  // function NavButton() {
+  //   console.log(swiperInstance?.params?.navigation);
+  //   return (
+  //     <>
+  //       <button
+  //         ref={prevBtnRef}
+  //         className="custom-prev"
+  //         onClick={() => {
+  //           console.log(swiperInstance?.params?.navigation);
+  //           swiperInstance?.slidePrev();
+  //         }}
+  //       >
+  //         <FontAwesomeIcon icon={faAngleLeft} />
+  //       </button>
+  //       <button
+  //         ref={nextBtnRef}
+  //         className="custom-next"
+  //         onClick={() => {
+  //           swiperInstance?.slideNext();
+  //         }}
+  //       >
+  //         <FontAwesomeIcon icon={faAngleRight} />
+  //       </button>
+  //     </>
+  //   );
+  // }
 
   return (
     <div className="slider-container relative">
+      {/* <NavButton /> */}
+      <button
+        ref={prevBtnRef}
+        className="custom-prev"
+        onClick={() => {
+          // console.log(swiperInstance?.params?.navigation);
+          swiperInstance?.slidePrev();
+        }}
+      >
+        <FontAwesomeIcon icon={faAngleLeft} />
+      </button>
+      <button
+        ref={nextBtnRef}
+        className="custom-next"
+        onClick={() => {
+          swiperInstance?.slideNext();
+        }}
+      >
+        <FontAwesomeIcon icon={faAngleRight} />
+      </button>
       {SliderResponse && (
         <>
           <div className="hidden md:block">
@@ -91,7 +115,7 @@ export default function Slider() {
                       <img
                         src={configImageUrl(slider.imageUrl)}
                         alt="Slider Image"
-                        className="w-full h-full"
+                        className="w-full h-full object-cover"
                       />
                       {slider.exploreLink.length > 0 && (
                         <button
@@ -104,6 +128,7 @@ export default function Slider() {
                     </div>
                   </SwiperSlide>
                 ))}
+              {/* <NavButton /> */}
             </Swiper>
           </div>
           <div className="block md:hidden">
@@ -131,7 +156,7 @@ export default function Slider() {
                       <img
                         src={configImageUrl(slider.imageUrl)}
                         alt="Slider Image"
-                        className="w-full h-full"
+                        className="w-full h-full inset-0 object-cover"
                       />
                       {slider.exploreLink.length > 0 && (
                         <button
@@ -148,7 +173,7 @@ export default function Slider() {
           </div>
         </>
       )}
-      <NavButton />
     </div>
   );
 }
+
