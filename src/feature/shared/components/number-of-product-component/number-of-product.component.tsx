@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../button-component/button.component";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-export default function ProductCounter() {
+export default function ProductCounter({ padding }: { padding?: string }) {
   const [count, setCount] = useState(1);
 
   const handleDecrease = () => {
@@ -14,7 +14,11 @@ export default function ProductCounter() {
   };
 
   return (
-    <div className="flex flex-row items-center bg-[#F0F0F0] rounded-full w-32 md:w-36 p-2">
+    <div
+      className={`flex flex-row items-center bg-[#F0F0F0] rounded-full w-32 md:w-36 ${
+        padding ? padding : "p-2"
+      }`}
+    >
       <Button label="" width="w-6 md:w-8 " onClick={handleDecrease}>
         <FontAwesomeIcon className="text-xl font-bold" icon={faMinus} />
       </Button>

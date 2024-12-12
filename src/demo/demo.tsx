@@ -20,6 +20,7 @@ import CategoryGallery from "../feature/home/components/category-gallery/cattego
 import { SingleCategoryGalleryItem } from "../feature/home";
 import { DoubleRangeSlider, ExpansionPanel } from "../feature/product-category";
 import { FaAngleDown, FaAngleRight, FaAngleUp } from "react-icons/fa";
+import { CartContainer } from "../feature/cart";
 // import { ProductDetails } from "../feature/product-details";
 
 export default function Demo() {
@@ -154,6 +155,9 @@ export default function Demo() {
         </div> */}
         <div className="mb-6">
           <Header />
+        </div>
+        <div className="mx-auto w-[96%]">
+          <CartContainer />
         </div>
         {/* <div className="mb-10">
           <DoubleRangeSlider

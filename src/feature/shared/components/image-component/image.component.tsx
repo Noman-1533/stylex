@@ -12,7 +12,7 @@ import { useState } from "react";
 export default function CustomImage({
   imageURL,
   altText = "",
-  size,
+  size = "",
   rounded = "SM",
   cursor = "",
   extraClasses,

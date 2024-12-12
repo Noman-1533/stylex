@@ -4,6 +4,7 @@ import Card from "./card-component/card.component";
 import CustomImage from "./image-component/image.component";
 import Divider from "./divider/divider.component";
 import Header from "./header-component/header.component";
+import Paginator from "./paginator-component/paginator.component";
 import Price from "./price-component/price.component";
 import ProductCarousel from "./product-carousel-component/product-carousel.component";
 import ProductCounter from "./number-of-product-component/number-of-product.component";
@@ -26,6 +27,7 @@ export {
   CustomImage,
   Divider,
   Header,
+  Paginator,
   Price,
   ProductCarousel,
   ProductCounter,

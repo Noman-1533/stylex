@@ -18,9 +18,9 @@ export default function BrandLogo({
       <text
         x="8"
         y="35"
-        font-family="Roboto ,Arial, sans-serif"
-        font-size="30"
-        font-weight={fontWeight}
+        fontFamily="Roboto ,Arial, sans-serif"
+        fontSize="30"
+        fontWeight={fontWeight}
         fill={fontColor}
       >
         {brandName}

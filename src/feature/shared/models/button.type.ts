@@ -8,5 +8,7 @@ export interface ButtonProps extends React.PropsWithChildren {
   color?: string;
   customStyles?: string;
   extraClasses?: string;
+  disabled?: boolean;
   onClick: () => void;
+  iconPosition?: "left" | "right";
 }

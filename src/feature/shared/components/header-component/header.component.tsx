@@ -9,10 +9,14 @@ import Search from "../search-component/search.component";
 
 export default function Header() {
   const [navToggle, setNavToggle] = useState(false);
+  const navigate = useNavigate();
+  const handleCartClick = () => {
+    navigate("/cart");
+  };
   return (
     <div>
       <div className="flex items-center justify-between lg:justify-evenly">
-        <div className="flex items-center basic-1/3">
+        <div className="flex items-center">
           <div className="w-8 px-2 text-lg md:hidden cursor-pointer ">
             <span
               onClick={() => setNavToggle((pre) => !pre)}
@@ -37,9 +41,9 @@ export default function Header() {
             <span className="inline-block md:hidden">
               <BrandLogo
                 brandName="StyleX"
-                height="50"
+                height="40"
                 width="95"
-                viewBox="0 0 95 50"
+                viewBox="0 0 95 40"
                 fontWeight="700"
               />
             </span>
@@ -53,7 +57,10 @@ export default function Header() {
 
         <span className="flex flex-row gap-4 items-center mr-2">
           <Search />
-          <FaCartShopping className="text-lg lg:text-2xl" />
+          <FaCartShopping
+            className="text-lg lg:text-2xl cursor-pointer"
+            onClick={handleCartClick}
+          />
           <CgProfile className="text-lg lg:text-2xl" />
         </span>
       </div>
@@ -88,7 +95,7 @@ function NavBar() {
   const navigate = useNavigate();
   const handleNavigate = (linkTo: string) => navigate(linkTo);
   return (
-    <div className="md:relative absolute -ml-2  bg-gray-200 w-[100vw] md:w-auto md:bg-transparent shadow-md md:shadow-none  z-10 ">
+    <div className="md:relative absolute top-10 md:top-0 -ml-2  bg-gray-200 w-[100vw] md:w-auto md:bg-transparent shadow-md md:shadow-none  z-10 ">
       <ul className="flex  flex-col md:flex-row gap-4 md:gap-[.125rem] ">
         {navItems.map((nav) => (
           <li
