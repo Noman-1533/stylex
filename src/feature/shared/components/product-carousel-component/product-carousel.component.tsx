@@ -1,3 +1,5 @@
+//carousel
+
 import { ProductCarouselProps } from "../../models";
 import Button from "../button-component/button.component";
 import Card from "../card-component/card.component";
@@ -20,7 +22,7 @@ export default function ProductCarousel({
         >
           {carouselTitle}
         </Title>
-        <div className="flex flex-wrap  md:gap-3 lg:gap-1 justify-evenly">
+        <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-1 justify-evenly">
           {products.slice(0, 4).map((product) => {
             return (
               <Card

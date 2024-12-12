@@ -4,9 +4,11 @@ import {
   Button,
   Card,
   Divider,
+  Header,
   ProductCarousel,
   Search,
   Slider,
+  // Sort,
   Title,
 } from "../feature";
 import Price from "../feature/shared/components/price-component/price.component";
@@ -146,11 +148,14 @@ export default function Demo() {
   ];
   return (
     <>
-      <div className="ml-0 mt-6">
+      <div className=" mt-6  lg:w-[90%] mx-auto ">
         {/* <div>
           <ProductDetails />
         </div> */}
-        <div className="mb-10">
+        <div className="mb-6">
+          <Header />
+        </div>
+        {/* <div className="mb-10">
           <DoubleRangeSlider
             minValue={0}
             maxValue={100}
@@ -164,7 +169,10 @@ export default function Demo() {
         </div>
         <div className="mb-10">
           <DoubleRangeSlider minValue={5} maxValue={95} step={15} />
-        </div>
+        </div> */}
+        {/* <div>
+          <Sort />
+        </div> */}
         <div>
           <ExpansionPanel
             panelName="Filters"
@@ -177,7 +185,7 @@ export default function Demo() {
                 maxValue={1000}
                 step={10}
                 leftLabelExtraLeft={1}
-                rightLabelExtraRight={7}
+                rightLabelExtraRight={12}
                 labelMinimumGap={40}
               />
             </div>

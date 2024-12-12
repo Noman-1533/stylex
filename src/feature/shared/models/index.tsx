@@ -1,3 +1,4 @@
+export * from "./brand-logo.type";
 export * from "./button.type";
 export * from "./card.type";
 export * from "./divider.type";
@@ -7,4 +8,5 @@ export * from "./product-carousel.type";
 export * from "./product.type";
 export * from "./rating.type";
 export * from "./search.type";
+export * from "./sort.type";
 export * from "./title.type";

@@ -1,7 +1,9 @@
+import BrandLogo from "./brand-logo-component/brand-logo.component";
 import Button from "./button-component/button.component";
 import Card from "./card-component/card.component";
 import CustomImage from "./image-component/image.component";
 import Divider from "./divider/divider.component";
+import Header from "./header-component/header.component";
 import Price from "./price-component/price.component";
 import ProductCarousel from "./product-carousel-component/product-carousel.component";
 import ProductCounter from "./number-of-product-component/number-of-product.component";
@@ -15,12 +17,15 @@ import ShimmerPageLoader, {
   ShimmerCarouselLoader,
 } from "./shimmer-effect/shimmer-effect.component";
 import Slider from "./slider/slider.component";
+import Sort from "./sort-component/sort.component";
 import Title from "./title-component/title.component";
 export {
+  BrandLogo,
   Button,
   Card,
   CustomImage,
   Divider,
+  Header,
   Price,
   ProductCarousel,
   ProductCounter,
@@ -33,5 +38,6 @@ export {
   ShimmerImageLoader,
   ShimmerPageLoader,
   Slider,
+  Sort,
   Title,
 };
