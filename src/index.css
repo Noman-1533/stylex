@@ -2,3 +2,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components{
+    .form-style{
+        @apply flex flex-col w-96 items-start mx-auto gap-4;
+    }
+    .input-primary{
+        @apply  border-b-2 border-b-gray-300 px-2 mx-1 focus:rounded-md  focus:border-2 focus:border-black focus:outline-none;
+    }
+    .input-error{
+        @apply border border-red-500 px-2 mx-1 rounded-md focus:shadow-none focus:outline-none;
+    }
+    .input-label-group{
+        @apply flex flex-col items-start my-4 ;
+    }
+    .error{
+        @apply w-full text-red-600 font-semibold px-2;
+    }
+    .btn-submit{
+        @apply bg-blue-600 text-white px-4 py-2 rounded-full w-3/5;
+    }
+}

@@ -7,6 +7,7 @@ import { SearchResult } from "./feature/index.tsx";
 import Demo from "./demo/demo.tsx";
 import { ProductDetails } from "./feature/product-details/index.tsx";
 import { CartContainer } from "./feature/cart/index.tsx";
+import { Login, Signup } from "./feature/auth/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <CartContainer />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/sign-up",
+        element: <Signup />,
       },
     ],
   },

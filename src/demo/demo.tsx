@@ -21,6 +21,7 @@ import { SingleCategoryGalleryItem } from "../feature/home";
 import { DoubleRangeSlider, ExpansionPanel } from "../feature/product-category";
 import { FaAngleDown, FaAngleRight, FaAngleUp } from "react-icons/fa";
 import { CartContainer } from "../feature/cart";
+// import { Login, Signup } from "../feature/auth";
 // import { ProductDetails } from "../feature/product-details";
 
 export default function Demo() {
@@ -153,9 +154,16 @@ export default function Demo() {
         {/* <div>
           <ProductDetails />
         </div> */}
+
         <div className="mb-6">
           <Header />
         </div>
+        {/* <div>
+          <Login />
+        </div>
+        <div>
+          <Signup />
+        </div> */}
         <div className="mx-auto w-[96%]">
           <CartContainer />
         </div>
