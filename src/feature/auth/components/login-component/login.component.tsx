@@ -5,6 +5,7 @@ import { AuthUser } from "../../api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { LoginResponse } from "../../models";
+import { CustomImage } from "../../../shared";
 
 const LoginSchema = z.object({
   username: z.string().nonempty({ message: "username is required" }),
@@ -46,7 +47,7 @@ export function LoginForm() {
     loginMutation.mutate(data);
   };
   return (
-    <form className="form-style" onSubmit={handleSubmit((d) => authUser(d))}>
+    <form className="form-style " onSubmit={handleSubmit((d) => authUser(d))}>
       <h1 className=" text-4xl font-semibold">Log in to StyleX</h1>
       <h4 className="text-base font-semibold">Enter your details below</h4>
       <div className="input-label-group">
@@ -79,10 +80,18 @@ export function LoginForm() {
     </form>
   );
 }
+import authImage from "../../../../assets/auth-image.png";
 export default function Login() {
   return (
-    <div>
-      <LoginForm />
+    <div className="flex gap-6 w-full xl:w-4/5 my-10 mx-auto ">
+      <CustomImage
+        imageURL={authImage}
+        extraClasses="w-4/5 hidden md:inline"
+        size="w-full mx-2"
+      />
+      <span className="w-full">
+        <LoginForm />
+      </span>
     </div>
   );
 }

@@ -21,10 +21,12 @@ import { SingleCategoryGalleryItem } from "../feature/home";
 import { DoubleRangeSlider, ExpansionPanel } from "../feature/product-category";
 import { FaAngleDown, FaAngleRight, FaAngleUp } from "react-icons/fa";
 import { CartContainer } from "../feature/cart";
+import { useState } from "react";
 // import { Login, Signup } from "../feature/auth";
 // import { ProductDetails } from "../feature/product-details";
 
 export default function Demo() {
+  const [count, setCount] = useState<number>(1);
   const carouselData = [
     {
       id: "1",
@@ -250,7 +252,7 @@ export default function Demo() {
           <SiteIntro />
         </div>
         <div className="mb-2">
-          <ProductCounter />
+          <ProductCounter count={count} setCount={setCount} />
         </div>
         <div>
           <Button

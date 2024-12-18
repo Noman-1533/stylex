@@ -83,8 +83,8 @@ export default function Paginator({
                   ? `${paginationButtonStyle}`
                   : `${
                       typeof page === "number"
-                        ? ` border border-2 border-gray-400 rounded-sm sm:px-1 sm:py-1 sm:border-1 ${
-                            page !== currentPage ? "hover:bg-yellow-200" : ""
+                        ? ` border border-2 border-gray-300 rounded-sm sm:px-1 sm:py-1 sm:border-1 ${
+                            page !== currentPage ? "hover:bg-gray-200" : ""
                           }`
                         : ""
                     }`
@@ -93,7 +93,7 @@ export default function Paginator({
                 page === currentPage
                   ? activeButtonStyle
                     ? `${activeButtonStyle}`
-                    : "bg-yellow-300 border-yellow-300"
+                    : "bg-gray-300 border-gray-300"
                   : ""
               }
               disabled={typeof page !== "number"}

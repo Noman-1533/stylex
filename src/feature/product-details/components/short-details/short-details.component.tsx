@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Button,
   Divider,
@@ -15,6 +16,7 @@ export default function ShortDetails({
   ProductPrice,
   ProductRating,
 }: ShortDetailsProps) {
+  const [count, setCount] = useState(1);
   return (
     <div className="p-3 w-full md:w-4/5 lg:w-auto xl:w-[44rem] flex flex-col gap-4 lg:gap-6">
       <Title font="font-extrabold" fontSize="text-3xl md:text-xl lg:text-4xl">
@@ -33,7 +35,7 @@ export default function ShortDetails({
       <Title extraClasses="text-gray-500 w-full ">{ProductDetails}</Title>
       <Divider width="w-[100%]" />
       <div className="flex gap-3">
-        <ProductCounter />
+        <ProductCounter count={count} setCount={setCount} />
         <Button
           label="Add to Cart"
           width="w-3/5"

@@ -1,16 +1,43 @@
-import { useState } from "react";
 import Button from "../button-component/button.component";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-export default function ProductCounter({ padding }: { padding?: string }) {
-  const [count, setCount] = useState(1);
-
+import { ProductCounterProps } from "../../models";
+import { useContext } from "react";
+import { CartContext } from "../../../cart/components/cart-container-component/cart-container.component";
+export default function ProductCounter({
+  padding,
+  count,
+  setCount,
+  id,
+}: ProductCounterProps) {
+  const context = useContext(CartContext);
   const handleDecrease = () => {
-    setCount((prev) => Math.max(prev - 1, 0)); // Prevent negative count
+    if (context && id) {
+      context.setCartItem((prev) =>
+        prev.map((item) =>
+          item.id === id ? { ...item, quantity: Math.max(count - 1, 1) } : item
+        )
+      );
+    }
+    if (setCount) {
+      setCount((prev) => {
+        return Math.max(prev - 1, 1);
+      });
+    }
   };
 
   const handleIncrease = () => {
-    setCount((prev) => prev + 1);
+    if (context && id) {
+      context.setCartItem((prev) =>
+        prev.map((item) =>
+          item.id === id ? { ...item, quantity: count + 1 } : item
+        )
+      );
+    }
+    if (setCount)
+      setCount((prev) => {
+        return prev + 1;
+      });
   };
 
   return (
@@ -25,7 +52,17 @@ export default function ProductCounter({ padding }: { padding?: string }) {
       <input
         type="number"
         value={count}
-        onChange={(e) => setCount(parseInt(e.target.value))}
+        onChange={(e) => {
+          const newValue = Math.max(1, parseInt(e.target.value) || 1);
+          if (setCount) setCount(newValue);
+          if (context && id) {
+            context.setCartItem((prev) =>
+              prev.map((item) =>
+                item.id === id ? { ...item, quantity: newValue } : item
+              )
+            );
+          }
+        }}
         className="w-12 md:w-14 lg:w-16 text-center bg-[#F0F0F0] outline-none font-semibold "
       />
       <Button label="" width="w-6 md:w-8 lg:w-10 " onClick={handleIncrease}>

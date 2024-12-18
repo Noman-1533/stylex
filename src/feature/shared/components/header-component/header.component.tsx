@@ -14,7 +14,7 @@ export default function Header() {
     navigate("/cart");
   };
   return (
-    <div>
+    <div className="mt-4">
       <div className="flex items-center justify-between lg:justify-evenly">
         <div className="flex items-center">
           <div className="w-8 px-2 text-lg md:hidden cursor-pointer ">
@@ -57,10 +57,15 @@ export default function Header() {
 
         <span className="flex flex-row gap-4 items-center mr-2">
           <Search />
-          <FaCartShopping
-            className="text-lg lg:text-2xl cursor-pointer"
-            onClick={handleCartClick}
-          />
+          <span className="flex gap-0.5">
+            <FaCartShopping
+              className="text-lg lg:text-2xl cursor-pointer"
+              onClick={handleCartClick}
+            />{" "}
+            <span className="text-sm w-[1rem] text-white px-1  h-[1.2rem] -my-1 rounded-full bg-red-600">
+              4
+            </span>
+          </span>
           <CgProfile className="text-lg lg:text-2xl" />
         </span>
       </div>

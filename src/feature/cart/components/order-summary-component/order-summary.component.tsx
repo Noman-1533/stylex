@@ -3,9 +3,12 @@ import { Button, Divider, Price, Title } from "../../../shared";
 import { OrderSummaryProps, SingleSummaryProps } from "../../models";
 
 export default function OrderSummary({ cartItems }: OrderSummaryProps) {
-  const subTotalPrice = cartItems.reduce((acc, item) => acc + item.price, 0);
+  const subTotalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
   const totalDiscount = cartItems.reduce((acc, item) => {
-    if (item.discount) return acc + item.discount;
+    if (item.discount) return acc + item.discount * item.quantity;
     else return acc + 0;
   }, 0);
   const deliveryFee = subTotalPrice + totalDiscount > 0 ? 15 : 0;

@@ -93,7 +93,7 @@ function Chips({ value, text }: { value: number; text: string }) {
 }
 
 function LogoGallery({ logos }: { logos: string[] }) {
-  console.log(logos[0]);
+  // console.log(logos[0]);
   return (
     <div className="flex flex-wrap gap-3 items-center justify-around w-full bg-black h-44 md:h-36 lg h:30">
       {logos.map((logo, index) => {

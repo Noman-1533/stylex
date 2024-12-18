@@ -1,11 +1,17 @@
 import { FaTrashAlt } from "react-icons/fa";
 import { CustomImage, Price, ProductCounter, Title } from "../../../shared";
 import { SingleCartProps } from "../../models";
+import { useContext } from "react";
+import { CartContext } from "../cart-container-component/cart-container.component";
 
-export default function SingleCartItem({
-  cartItems,
-  onDelete,
-}: SingleCartProps) {
+export default function SingleCartItem({ cartItems }: SingleCartProps) {
+  const context = useContext(CartContext);
+  // const [count, setCount] = useState<number>(1);
+  const onDelete = (id: number) => {
+    if (context) {
+      context.setCartItem((pre) => pre.filter((item) => item.id !== id));
+    }
+  };
   return (
     <div>
       <div className="flex gap-2">
@@ -26,10 +32,16 @@ export default function SingleCartItem({
           <div className="text-gray-400">dummy</div>
           <div className="flex gap-2 justify-between">
             <Price price={cartItems.price} extraClasses="text-xl" />
-            <ProductCounter padding="px-3 " />
+            <ProductCounter
+              padding="px-3 "
+              count={cartItems.quantity}
+              // setCount={setCount}
+              id={cartItems.id}
+            />
           </div>
         </div>
       </div>
     </div>
   );
 }
+

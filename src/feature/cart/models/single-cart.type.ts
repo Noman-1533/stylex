@@ -9,5 +9,6 @@ export interface SingleCartItemType {
 
 export interface SingleCartProps {
   cartItems: SingleCartItemType;
-  onDelete: (id: number) => void;
+  // onDelete: (id: number) => void;
+  // onUpdate: (id: number, value: number) => void;
 }

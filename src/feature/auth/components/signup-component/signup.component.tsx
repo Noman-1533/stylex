@@ -77,7 +77,7 @@ export function SignupForm() {
         {errors.password && <p className="error">{errors.password.message}</p>}
       </div>
       <button type="submit" className="btn-submit">
-        Submit
+        Create Account
       </button>
       <p>
         Already have an account?{" "}
@@ -93,10 +93,19 @@ export function SignupForm() {
     </form>
   );
 }
+import authImage from "../../../../assets/auth-image.png";
+import { CustomImage } from "../../../shared";
 export default function Signup() {
   return (
-    <div>
-      <SignupForm />
+    <div className="flex gap-6 w-full xl:w-4/5 my-10 mx-auto ">
+      <CustomImage
+        imageURL={authImage}
+        extraClasses="w-4/5 hidden md:inline"
+        size="w-full mx-2"
+      />
+      <span className="w-full">
+        <SignupForm />
+      </span>
     </div>
   );
 }

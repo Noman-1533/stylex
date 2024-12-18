@@ -6,6 +6,7 @@ export * from "./image.type";
 export * from "./paginator.type";
 export * from "./price.type";
 export * from "./product-carousel.type";
+export * from "./product-counter.type";
 export * from "./product.type";
 export * from "./rating.type";
 export * from "./search.type";

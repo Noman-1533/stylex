@@ -8,6 +8,7 @@ import Demo from "./demo/demo.tsx";
 import { ProductDetails } from "./feature/product-details/index.tsx";
 import { CartContainer } from "./feature/cart/index.tsx";
 import { Login, Signup } from "./feature/auth/index.tsx";
+import Home from "./feature/home/components/home.page.tsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Demo />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
       },
       {
         path: "/search",
