@@ -1,1 +1,2 @@
-export * from "./button.type";
+export * from "./expansion-panel.type";
+export * from "./range-slider.type";

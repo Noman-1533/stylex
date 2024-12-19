@@ -7,9 +7,15 @@ export default function CategoryGallery({
   const HandleClick = (item: string) => {
     console.log("navigate url", item);
   };
+  const getColSpan = (index: number) => {
+    const rowNumber = Math.floor(index / 2);
+    const colNumber = index % 2;
+    // console.log("index", index, "\nrow=>", rowNumber, " ==  col=>", colNumber);
+    return rowNumber % 2 !== colNumber % 2 ? "lg:col-span-2" : "col-span-1";
+  };
 
   return (
-    <div className="bg-[#F0F0F0] flex flex-col items-center p-4 m-6 rounded-3xl">
+    <div className="bg-[#F0F0F0] flex flex-col items-center p-4 m-6 rounded-3xl cursor-pointer">
       <Title fontSize="text-5xl" font="font-bold" extraClasses="text-center">
         BROWSE BY CATEGORY
       </Title>
@@ -23,7 +29,7 @@ export default function CategoryGallery({
           <div
             key={index}
             className={`
-            ${index === 1 || index === 2 ? "lg:col-span-2" : "col-span-1"}
+            ${getColSpan(index)}
             w-full bg-[#FEFEFE] rounded-xl
           `}
           >
@@ -38,7 +44,7 @@ export default function CategoryGallery({
               onClick={() => HandleClick(item.url as string)}
               extraClasses=""
             >
-              <span>{item.name}</span>
+              <span className="bg-[#FEFEFE] py-1 px-1">{item.name}</span>
             </CustomImage>
           </div>
         ))}

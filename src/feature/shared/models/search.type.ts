@@ -6,6 +6,12 @@ export interface SearchResponse {
   skip: number;
   limit: number;
 }
+export interface APIResponse {
+  products: ProductResponse[];
+  total: number;
+  skip: number;
+  limit: number;
+}
 
 export interface SearchResultProps {
   response: SearchResponse;

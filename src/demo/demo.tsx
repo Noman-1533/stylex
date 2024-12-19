@@ -4,9 +4,11 @@ import {
   Button,
   Card,
   Divider,
+  Header,
   ProductCarousel,
   Search,
   Slider,
+  // Sort,
   Title,
 } from "../feature";
 import Price from "../feature/shared/components/price-component/price.component";
@@ -16,11 +18,15 @@ import ProductCounter from "../feature/shared/components/number-of-product-compo
 import SiteIntro from "../feature/home/components/site-intro/site-intro.component";
 import CategoryGallery from "../feature/home/components/category-gallery/cattegory-gallery.component";
 import { SingleCategoryGalleryItem } from "../feature/home";
-import { ExpansionPanel } from "../feature/product-category";
-import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { DoubleRangeSlider, ExpansionPanel } from "../feature/product-category";
+import { FaAngleDown, FaAngleRight, FaAngleUp } from "react-icons/fa";
+import { CartContainer } from "../feature/cart";
+import { useState } from "react";
+// import { Login, Signup } from "../feature/auth";
 // import { ProductDetails } from "../feature/product-details";
 
 export default function Demo() {
+  const [count, setCount] = useState<number>(1);
   const carouselData = [
     {
       id: "1",
@@ -146,15 +152,90 @@ export default function Demo() {
   ];
   return (
     <>
-      <div className="ml-0 mt-6">
+      <div className=" mt-6  lg:w-[90%] mx-auto ">
         {/* <div>
           <ProductDetails />
         </div> */}
+
+        <div className="mb-6">
+          <Header />
+        </div>
+        {/* <div>
+          <Login />
+        </div>
+        <div>
+          <Signup />
+        </div> */}
+        <div className="mx-auto w-[96%]">
+          <CartContainer />
+        </div>
+        {/* <div className="mb-10">
+          <DoubleRangeSlider
+            minValue={0}
+            maxValue={100}
+            step={1}
+            leftLabelExtraLeft={0.5}
+            rightLabelExtraRight={1}
+          />
+        </div>
+        <div className="mb-10">
+          <DoubleRangeSlider minValue={5} maxValue={95} step={10} />
+        </div>
+        <div className="mb-10">
+          <DoubleRangeSlider minValue={5} maxValue={95} step={15} />
+        </div> */}
+        {/* <div>
+          <Sort />
+        </div> */}
         <div>
           <ExpansionPanel
-            toggleIcon={<FaAngleDown />}
-            nonToggleIcon={<FaAngleUp />}
+            panelName="Filters"
+            toggleIcon={<FaAngleUp />}
+            nonToggleIcon={<FaAngleDown />}
+          >
+            <div className="h-40">
+              <DoubleRangeSlider
+                minValue={10}
+                maxValue={1000}
+                step={10}
+                leftLabelExtraLeft={1}
+                rightLabelExtraRight={12}
+                labelMinimumGap={40}
+              />
+            </div>
+          </ExpansionPanel>
+        </div>
+        <div>
+          <ExpansionPanel
+            panelName="Filters"
+            toggleIcon={<FaAngleUp />}
+            nonToggleIcon={<FaAngleDown />}
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
+            velit error eveniet quam eius consequatur necessitatibus quisquam
+            qui, consequuntur voluptas! Labore dolor hic quia accusantium
+            doloribus. Molestiae officia quo facere?
+          </ExpansionPanel>
+        </div>
+        <div>
+          <ExpansionPanel
+            panelName="Price"
+            toggleIcon={<FaAngleUp />}
+            nonToggleIcon={<FaAngleDown />}
           />
+        </div>
+        <div>
+          <ExpansionPanel
+            panelName="T-shirts"
+            panelNameStyle="text-base"
+            toggleIcon={<FaAngleUp />}
+            nonToggleIcon={<FaAngleRight />}
+          >
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint
+            quisquam amet minus aut fuga totam, suscipit molestiae similique
+            assumenda? Natus, sint modi. Nulla deserunt modi, tempora ab rerum
+            impedit numquam!
+          </ExpansionPanel>
         </div>
         <div>
           <Divider width="w-4/5" />
@@ -171,7 +252,7 @@ export default function Demo() {
           <SiteIntro />
         </div>
         <div className="mb-2">
-          <ProductCounter />
+          <ProductCounter count={count} setCount={setCount} />
         </div>
         <div>
           <Button
