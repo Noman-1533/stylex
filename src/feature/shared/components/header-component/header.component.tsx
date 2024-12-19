@@ -30,7 +30,10 @@ export default function Header() {
             </span>
           </div>
           <span>
-            <span className="hidden md:inline-block">
+            <span
+              className="hidden md:inline-block cursor-pointer"
+              onClick={() => navigate("/home")}
+            >
               <BrandLogo
                 brandName="StyleX"
                 height="50"
@@ -38,7 +41,10 @@ export default function Header() {
                 viewBox="0 0 125 50"
               />
             </span>
-            <span className="inline-block md:hidden">
+            <span
+              className="inline-block md:hidden cursor-pointer"
+              onClick={() => navigate("/home")}
+            >
               <BrandLogo
                 brandName="StyleX"
                 height="40"
@@ -57,16 +63,18 @@ export default function Header() {
 
         <span className="flex flex-row gap-4 items-center mr-2">
           <Search />
-          <span className="flex gap-0.5">
-            <FaCartShopping
-              className="text-lg lg:text-2xl cursor-pointer"
-              onClick={handleCartClick}
-            />{" "}
-            <span className="text-sm w-[1rem] text-white px-1  h-[1.2rem] -my-1 rounded-full bg-red-600">
+          <span
+            className="flex gap-0.5 cursor-pointer"
+            onClick={handleCartClick}
+          >
+            <FaCartShopping className="text-lg lg:text-2xl " />{" "}
+            <span className="text-sm  text-white px-1  h-[1.2rem] -my-1 rounded-full bg-red-600">
               4
             </span>
           </span>
-          <CgProfile className="text-lg lg:text-2xl" />
+          <span className="cursor-pointer">
+            <CgProfile className="text-lg lg:text-2xl" />
+          </span>
         </span>
       </div>
       <Divider width="w-full " />

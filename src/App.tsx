@@ -1,7 +1,7 @@
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 // import Demo from "./demo/demo";
 import { Outlet } from "react-router-dom";
-import { Header } from "./feature";
+import { Footer, Header } from "./feature";
 
 const queryClient = new QueryClient();
 function App() {
@@ -9,6 +9,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Header />
       <Outlet />
+      <Footer />
     </QueryClientProvider>
   );
 }

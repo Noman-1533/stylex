@@ -41,7 +41,7 @@ export default function CustomImage({
         style={{ overflow: "hidden" }}
       >
         {loading && (
-          <div className="absolute top-0 left-0 w-full h-full z-0">
+          <div className="absolute top-0 left-0 w-full h-full z-0 ">
             <ShimmerDiv mode="light" height="100%" width="100%" />
           </div>
         )}
@@ -50,7 +50,7 @@ export default function CustomImage({
         <LazyLoadImage
           src={imageURL}
           alt={altText}
-          className={`w-full h-full max-h-[34rem] object-contain ${BorderRound[rounded]}`}
+          className={`w-full min-w-48 h-full max-h-[34rem] object-contain ${BorderRound[rounded]}`}
           effect={imageURL.startsWith("http") ? "opacity" : undefined}
           onLoad={() => setLoading(false)}
           style={{ zIndex: 1 }}

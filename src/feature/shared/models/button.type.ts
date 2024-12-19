@@ -11,4 +11,5 @@ export interface ButtonProps extends React.PropsWithChildren {
   disabled?: boolean;
   onClick: () => void;
   iconPosition?: "left" | "right";
+  type?: "button" | "submit" | "reset";
 }

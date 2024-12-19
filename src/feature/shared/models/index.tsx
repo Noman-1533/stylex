@@ -2,6 +2,7 @@ export * from "./brand-logo.type";
 export * from "./button.type";
 export * from "./card.type";
 export * from "./divider.type";
+export * from "./footer.type";
 export * from "./image.type";
 export * from "./paginator.type";
 export * from "./price.type";

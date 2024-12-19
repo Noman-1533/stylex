@@ -3,6 +3,7 @@ import Button from "./button-component/button.component";
 import Card from "./card-component/card.component";
 import CustomImage from "./image-component/image.component";
 import Divider from "./divider/divider.component";
+import Footer from "./footer-component/footer.component";
 import Header from "./header-component/header.component";
 import Paginator from "./paginator-component/paginator.component";
 import Price from "./price-component/price.component";
@@ -20,12 +21,14 @@ import ShimmerPageLoader, {
 import Slider from "./slider/slider.component";
 import Sort from "./sort-component/sort.component";
 import Title from "./title-component/title.component";
+import ViewProducts from "./view-products/view-products.component";
 export {
   BrandLogo,
   Button,
   Card,
   CustomImage,
   Divider,
+  Footer,
   Header,
   Paginator,
   Price,
@@ -42,4 +45,5 @@ export {
   Slider,
   Sort,
   Title,
+  ViewProducts,
 };

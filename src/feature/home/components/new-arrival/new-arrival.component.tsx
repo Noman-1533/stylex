@@ -7,6 +7,7 @@ import {
   transformToCardProps,
 } from "../../../shared";
 import CustomError from "../../../../error.component";
+import { useNavigate } from "react-router-dom";
 
 export default function NewArrival() {
   const {
@@ -15,12 +16,13 @@ export default function NewArrival() {
     error,
   } = useQuery({
     queryKey: [`new-arrival-${window.innerWidth}`],
-    queryFn: newArrival,
+    queryFn: () => newArrival(0, 0),
     staleTime: QueryTime.STALE,
   });
+  const navigate = useNavigate();
 
   const handleViewNewArrival = () => {
-    console.log("clicked form new arrival");
+    navigate("/products/new-arrival");
   };
 
   if (isLoading) return <ShimmerCarouselLoader />;

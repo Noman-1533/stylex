@@ -7,6 +7,7 @@ import {
   transformToCardProps,
 } from "../../../shared";
 import CustomError from "../../../../error.component";
+import { useNavigate } from "react-router-dom";
 
 export default function TopSelling() {
   const {
@@ -15,12 +16,13 @@ export default function TopSelling() {
     error,
   } = useQuery({
     queryKey: [`top-selling-products-${window.innerWidth}`],
-    queryFn: topSelling,
+    queryFn: () => topSelling(0, 0),
     staleTime: QueryTime.STALE,
   });
+  const navigate = useNavigate();
 
   const handleShowMore = () => {
-    console.log("click form top selling");
+    navigate("/products/top-selling");
   };
 
   if (isLoading) return <ShimmerCarouselLoader />;
