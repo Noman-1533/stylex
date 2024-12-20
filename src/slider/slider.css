@@ -1,7 +1,7 @@
 /* Swiper container styling */
 .swiper {
-  width: 97vw;
-  height: 44rem;
+  width: 100vw;
+  height: 45rem;
 }
 
 /* Styling for individual swiper slides */
@@ -17,8 +17,8 @@
 
 .swiper-slide img {
   display: block;
-  width: 97vw;
-  height: 44rem;
+  width: 100vw;
+  height: 48rem;
   object-fit: cover;
 }
 
@@ -57,11 +57,11 @@
 .custom-next:hover, .custom-prev:hover{border: none;}
 
 .custom-prev {
-  left: 2rem;
+  left: 1rem;
 }
 
 .custom-next {
-  right: 2rem;
+  right: 1rem;
 }
 
 .custom-prev:hover,
@@ -71,18 +71,18 @@
 
 /* Styling for the explore button */
 .btn-explore {
-  background-color: #3a3a3a;
+  background-color: rgba(58, 58, 58, 0.6);
   position: absolute;
   bottom: 4rem;
   left: 2.5rem;
   color: white;
   padding: 10px;
-  opacity: 0.9;
   border-radius: 13px;
   width: 12rem;
+  font-weight:500;
 }
 .btn-explore:hover{
-  background-color: #001D4C;
+  background-color: rgba(0, 29, 76, 0.6);
 }
 
 /* Pagination styling to ensure it's in the right-bottom corner */
@@ -93,28 +93,65 @@
   z-index: 15;
   color: white; 
 }
-.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+
+
+/* Swiper Pagination Styling */
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
   position: absolute;
-  background-color: #A2ABB0;
-  width: 6rem;
+  background-color: rgba(120, 122, 124, 0.5); /* Blur background */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  width: 10rem;
+  height: 1.75rem; /* Set height */
   right: 4rem;
   padding: 0.5rem;
-  opacity:0.9 ;
-  gap:0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around; /* Space between bullet points */
+  gap: 1.25rem; /* Extra gap for mobile users */
   border-radius: 12px;
-
-  left:auto;
+  left: auto;
 }
-@media (max-width:768px){
-  .btn-explore{
-    width:18rem;
-    bottom:4rem
+
+/* Ensure the bullet points are visible and centered */
+.swiper-pagination-bullet {
+  background-color: rgb(203, 203, 203); /* Bullet point color */
+  opacity: 1; /* Ensure bullet points are not blurred */
+  width: 9px; /* Adjust size for better visibility */
+  height: 9px;
+  cursor: pointer;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #001d4c; /* Active bullet color */
+}
+@media (max-width: 768px) {
+  .btn-explore {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20rem;
+    bottom: 1.5rem;
   }
   .swiper-slide {
     height: 42rem;
   }
-  .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
-    left:40%;
-    right:auto;
+  .mySwiper .swiper-pagination {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .swiper-pagination-fraction,
+  .swiper-pagination-custom,
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    /* left: 6.5rem; */
+    right: auto;
+    width: 10rem;
+  }
+  .swiper-pagination-bullet {
+    width: 8px; /* Slightly larger bullets for touch-friendly design */
+    height: 8px;
+    gap: 1.25rem; /* Increased gap for better spacing */
   }
 }
