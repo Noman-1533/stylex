@@ -5,12 +5,18 @@ import {
   SingleCategoryGalleryItem,
 } from "../models";
 
-export const getCategories = async () => {
+export const getCategories = async (
+  sliceStartPoint: number = 8,
+  sliceEndPoint: number = 16
+) => {
   const { data: categories } = await apiClient.get<SingleCategoryAPIResponse[]>(
     "products/categories"
   );
 
-  const firstFourCategories = categories.slice(8, 16);
+  const firstFourCategories =
+    sliceEndPoint === 0
+      ? categories
+      : categories.slice(sliceStartPoint, sliceEndPoint);
   const updatedCategory: SingleCategoryGalleryItem[] = await Promise.all(
     firstFourCategories.map(async (category) => {
       const { data: imageProperty } = await apiClient.get<APIResponse>(

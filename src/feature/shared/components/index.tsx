@@ -1,6 +1,7 @@
 import BrandLogo from "./brand-logo-component/brand-logo.component";
 import Button from "./button-component/button.component";
 import Card from "./card-component/card.component";
+import CategoriesPage from "./categories-page/categories.page";
 import CustomImage from "./image-component/image.component";
 import Divider from "./divider/divider.component";
 import Footer from "./footer-component/footer.component";
@@ -26,6 +27,7 @@ export {
   BrandLogo,
   Button,
   Card,
+  CategoriesPage,
   CustomImage,
   Divider,
   Footer,

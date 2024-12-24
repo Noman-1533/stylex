@@ -92,7 +92,7 @@ function NavBar() {
     {
       id: 2,
       name: "Categories",
-      linkTo: "products/categories",
+      linkTo: "/categories",
     },
     {
       id: 3,

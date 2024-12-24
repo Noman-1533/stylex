@@ -4,7 +4,7 @@ import {
   Button,
   Card,
   Divider,
-  Header,
+  // Header,
   ProductCarousel,
   Search,
   Slider,
@@ -18,7 +18,11 @@ import ProductCounter from "../feature/shared/components/number-of-product-compo
 import SiteIntro from "../feature/home/components/site-intro/site-intro.component";
 import CategoryGallery from "../feature/home/components/category-gallery/cattegory-gallery.component";
 import { SingleCategoryGalleryItem } from "../feature/home";
-import { DoubleRangeSlider, ExpansionPanel } from "../feature/product-category";
+import {
+  DoubleRangeSlider,
+  ExpansionPanel,
+  Sidenav,
+} from "../feature/product-category";
 import { FaAngleDown, FaAngleRight, FaAngleUp } from "react-icons/fa";
 import { CartContainer } from "../feature/cart";
 import { useState } from "react";
@@ -157,15 +161,20 @@ export default function Demo() {
           <ProductDetails />
         </div> */}
 
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <Header />
-        </div>
+        </div> */}
         {/* <div>
           <Login />
         </div>
         <div>
           <Signup />
-        </div> */}
+          </div> */}
+        <Divider width="w-full" />
+        <div>
+          <Sidenav />
+        </div>
+        <Divider width="w-full" />
         <div className="mx-auto w-[96%]">
           <CartContainer />
         </div>

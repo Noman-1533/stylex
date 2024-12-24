@@ -14,7 +14,7 @@ export default function Home() {
     error: categoryItemsError,
   } = useQuery({
     queryKey: ["categoryGalleryItems"],
-    queryFn: getCategories,
+    queryFn: () => getCategories(),
     staleTime: QueryTime.STALE,
   });
   // console.log(categoryGalleryItems);

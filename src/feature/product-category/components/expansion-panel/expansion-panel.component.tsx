@@ -4,6 +4,7 @@ import { ExpansionPanelProps } from "../../models";
 export default function ExpansionPanel({
   panelName,
   panelNameStyle,
+  childJustify = "center",
   toggleIcon,
   nonToggleIcon,
   children,
@@ -12,7 +13,7 @@ export default function ExpansionPanel({
   const contentRef = useRef<HTMLDivElement>(null); // Reference to the content div
 
   return (
-    <div className="w-full md:w-60 rounded-xl flex flex-col gap-4">
+    <div className="w-full rounded-xl flex flex-col gap-4">
       <span
         className={`flex items-end px-2 justify-between  ${
           panelNameStyle ? panelName : "text-xl font-bold"
@@ -36,7 +37,17 @@ export default function ExpansionPanel({
             : 0,
         }}
       >
-        <div className="p-2">{children}</div>
+        <div
+          className={`p-2 ${
+            childJustify === "center"
+              ? "justify-self-center"
+              : childJustify === "start"
+              ? "justify-self-start"
+              : "justify-self-end"
+          }`}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -55,7 +55,7 @@ export function LoginForm() {
           id="username"
           {...register("username")}
           className={errors.username ? "input-error" : "input-primary"}
-          placeholder="Email"
+          placeholder="username"
         />
         {errors?.username?.message && (
           <p className="error">{errors.username.message}</p>

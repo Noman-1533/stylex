@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { CustomImage, Title } from "../../../shared";
 import { CategoryGalleryProps } from "../../models";
 
 export default function CategoryGallery({
   galleryItems,
 }: CategoryGalleryProps) {
-  const HandleClick = (item: string) => {
-    console.log("navigate url", item);
+  const navigate = useNavigate();
+  const HandleClick = (categoryName: string) => {
+    navigate(`/product/category/${categoryName}`);
   };
   const getColSpan = (index: number) => {
     const rowNumber = Math.floor(index / 2);
@@ -41,7 +43,7 @@ export default function CategoryGallery({
               childTextColor="text-black"
               childrenXPosition="LEFT"
               childTextSize="font-bold text-2xl"
-              onClick={() => HandleClick(item.url as string)}
+              onClick={() => HandleClick(item.slug as string)}
               extraClasses=""
             >
               <span className="bg-[#FEFEFE] py-1 px-1">{item.name}</span>
