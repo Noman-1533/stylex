@@ -1,19 +1,27 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import {
   CategoriesPage,
+  ProtectedRoute,
+  RouteWrapper,
   SearchResult,
   ViewProducts,
 } from "./feature/index.tsx";
-import Demo from "./demo/demo.tsx";
+// import Demo from "./demo/demo.tsx";
 import { ProductDetails } from "./feature/product-details/index.tsx";
-import { CartContainer } from "./feature/cart/index.tsx";
+import { CartContainer, CartContextProvider } from "./feature/cart/index.tsx";
 import { Login, Signup } from "./feature/auth/index.tsx";
 import Home from "./feature/home/components/home.page.tsx";
 import { ProductCategory } from "./feature/product-category/index.tsx";
+import AuthProvider from "./provider/auth-provider/auth.provider.tsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
   {
@@ -22,11 +30,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Demo />,
+        element: <Home />,
       },
       {
         path: "/home",
-        element: <Home />,
+        element: <Navigate to={"/"} replace />,
       },
       {
         path: "products/:endpoint",
@@ -42,7 +50,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <CartContainer />,
+        element: (
+          <ProtectedRoute>
+            <CartContainer />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/login",
@@ -63,9 +75,18 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <CartContextProvider>
+          <RouteWrapper>
+            <RouterProvider router={router} />
+          </RouteWrapper>
+        </CartContextProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </StrictMode>
 );

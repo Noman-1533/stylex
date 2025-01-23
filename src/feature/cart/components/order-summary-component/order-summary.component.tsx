@@ -3,12 +3,10 @@ import { Button, Divider, Price, Title } from "../../../shared";
 import { OrderSummaryProps, SingleSummaryProps } from "../../models";
 
 export default function OrderSummary({ cartItems }: OrderSummaryProps) {
-  const subTotalPrice = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+  console.log("all carts=> ", cartItems);
+  const subTotalPrice = cartItems.reduce((acc, item) => acc + item.total, 0);
   const totalDiscount = cartItems.reduce((acc, item) => {
-    if (item.discount) return acc + item.discount * item.quantity;
+    if (item.discountTotal) return acc + item.total - item.discountTotal;
     else return acc + 0;
   }, 0);
   const deliveryFee = subTotalPrice + totalDiscount > 0 ? 15 : 0;
@@ -38,13 +36,16 @@ export default function OrderSummary({ cartItems }: OrderSummaryProps) {
           nameColor="text-black"
         />
         <Button
-          label="Go to Checkout"
+          label={`${
+            !cartItems.length ? "Add some item for proceeding to" : "Go to"
+          } Checkout `}
           width="w-full"
           onClick={handleCheckout}
-          backgroundColor="bg-black"
+          backgroundColor={`bg-black ${!cartItems.length ? "bg-gray-600" : ""}`}
           color="text-white"
           rounded="FULL"
-          extraClasses="py-4"
+          extraClasses={`py-4`}
+          disabled={!cartItems.length}
         >
           <FaArrowRight />
         </Button>

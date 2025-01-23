@@ -24,19 +24,20 @@ export default function Tags({
   };
   return (
     <div className="flex flex-wrap gap-2">
-      {tags.map((item) => (
-        <button
-          key={item.tag}
-          onClick={() => handleTagClick(item.tag)}
-          className={`px-4 py-1 rounded-full text-sm transition ${
-            selectedTags.includes(item.tag)
-              ? "bg-black text-white"
-              : "bg-gray-200 text-gray-700"
-          }`}
-        >
-          {item.name}
-        </button>
-      ))}
+      {tags &&
+        tags.map((item) => (
+          <button
+            key={item.tag}
+            onClick={() => handleTagClick(item.tag)}
+            className={`px-4 py-1 rounded-full text-sm transition ${
+              selectedTags.includes(item.tag)
+                ? "bg-black text-white"
+                : "bg-gray-200 text-gray-700"
+            }`}
+          >
+            {item.name}
+          </button>
+        ))}
     </div>
   );
 }

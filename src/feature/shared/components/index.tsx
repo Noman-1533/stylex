@@ -10,7 +10,9 @@ import Paginator from "./paginator-component/paginator.component";
 import Price from "./price-component/price.component";
 import ProductCarousel from "./product-carousel-component/product-carousel.component";
 import ProductCounter from "./number-of-product-component/number-of-product.component";
+import ProtectedRoute from "./protected-route-component/protected-route.component";
 import Rating from "./rating-component/rating.component";
+import RouteWrapper from "./route-wrapper-component/route-wrapper.component";
 import Search from "./search-component/search.component";
 import SearchResult from "./search-component/search-result.component";
 import ShimmerPageLoader, {
@@ -36,7 +38,9 @@ export {
   Price,
   ProductCarousel,
   ProductCounter,
+  ProtectedRoute,
   Rating,
+  RouteWrapper,
   Search,
   SearchResult,
   ShimmerCardLoader,

@@ -19,5 +19,5 @@ export enum TextVerticalAlignment {
   BOTTOM = "bottom-0",
 }
 export enum QueryTime {
-  STALE = 1000 * 60 * 60 * 4,
+  STALE = 1000 * 60 * 60 * 10,
 }

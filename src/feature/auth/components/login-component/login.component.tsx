@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { AuthUser } from "../../api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { LoginResponse } from "../../models";
@@ -17,6 +16,8 @@ const LoginSchema = z.object({
 type LoginInput = z.infer<typeof LoginSchema>;
 export function LoginForm() {
   const queryClient = useQueryClient();
+  const { login, authenticated } = useAuthedUser();
+  const { loading: cartLoading } = useCartContext();
   const {
     register,
     formState: { errors },
@@ -29,12 +30,13 @@ export function LoginForm() {
       password: "",
     },
   });
+  const navigate = useNavigate();
   const loginMutation = useMutation({
-    mutationFn: (data: LoginInput) =>
-      AuthUser(data.username, data.password, 30),
+    mutationFn: (data: LoginInput) => login(data.username, data.password),
     onSuccess: (response) => {
-      console.log(response.data);
-      queryClient.setQueryData(["currentUser"], response.data);
+      console.log(response);
+      queryClient.setQueryData(["currentUser"], response);
+      // setAuthedUser(response.data);
     },
     onError: (error: AxiosError<LoginResponse>) => {
       const serverMessage = error.response?.data?.message;
@@ -46,6 +48,7 @@ export function LoginForm() {
   const authUser = (data: LoginInput) => {
     loginMutation.mutate(data);
   };
+  if (authenticated && !cartLoading) navigate("/home");
   return (
     <form className="form-style " onSubmit={handleSubmit((d) => authUser(d))}>
       <h1 className=" text-4xl font-semibold">Log in to StyleX</h1>
@@ -81,6 +84,9 @@ export function LoginForm() {
   );
 }
 import authImage from "../../../../assets/auth-image.png";
+import { useAuthedUser } from "../../../../provider";
+import { useNavigate } from "react-router-dom";
+import { useCartContext } from "../../../cart/components/cart-container-component/cart-container.component";
 export default function Login() {
   return (
     <div className="flex gap-6 w-full xl:w-4/5 my-10 mx-auto ">

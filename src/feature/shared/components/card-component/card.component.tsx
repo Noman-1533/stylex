@@ -3,19 +3,38 @@ import { CardProps } from "../../models/card.type";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { SingleCartItemType } from "../../../cart";
+import { useCartContext } from "../../../cart/components/cart-container-component/cart-container.component";
 export default function Card({
   id,
   title,
   rating = 0,
-  imageURL,
+  thumbnail,
   price = 0,
-  discount = 0,
+  discountPercentage = 0,
   customStyles = "",
-  onClick = (id: string) => console.log(id),
+  onClickAddToCart,
 }: CardProps) {
+  const { carts: currentCartItems, addToCart } = useCartContext();
   const navigate = useNavigate();
-  const handleDetailsClick = (id: string) => {
+  const handleDetailsClick = (id: number) => {
     navigate(`/details/${id}`);
+  };
+  const cartTypeItem: SingleCartItemType = {
+    id,
+    title,
+    price,
+    thumbnail: thumbnail as string,
+    discountPercentage,
+    quantity: 1,
+    discountTotal: parseFloat(
+      (price - (price * discountPercentage) / 100).toFixed(2)
+    ) as number,
+    total: price,
+  };
+  const defaultOnClickAddToCart = () => {
+    console.log("click");
+    addToCart(cartTypeItem, currentCartItems!);
   };
   return (
     <>
@@ -26,7 +45,7 @@ export default function Card({
         {/* Image Section */}
         <div className="relative">
           <CustomImage
-            imageURL={imageURL as string}
+            imageURL={thumbnail as string}
             size="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72"
             altText="Product Image"
             rounded="LG"
@@ -43,7 +62,11 @@ export default function Card({
               color="text-white"
               rounded="LG"
               customStyles="px-6 py-2"
-              onClick={() => onClick(`from cart ${id}`)}
+              onClick={() =>
+                onClickAddToCart !== undefined
+                  ? onClickAddToCart(cartTypeItem)
+                  : defaultOnClickAddToCart
+              }
             >
               <FontAwesomeIcon icon={faCartShopping} className="text-2xl" />
             </Button>
@@ -58,7 +81,11 @@ export default function Card({
               color="text-white"
               rounded="LG"
               customStyles="w-full px-4 py-2"
-              onClick={() => onClick(id)}
+              onClick={() =>
+                onClickAddToCart !== undefined
+                  ? onClickAddToCart(cartTypeItem)
+                  : defaultOnClickAddToCart
+              }
             >
               <FontAwesomeIcon icon={faCartShopping} className="text-2xl" />
             </Button>
@@ -77,7 +104,7 @@ export default function Card({
 
         <Rating rating={rating as number} maxRating={5} />
 
-        <Price price={price as number} discount={discount} />
+        <Price price={price as number} discount={discountPercentage} />
       </div>
     </>
   );

@@ -1,10 +1,20 @@
-export interface CardProps {
-  id: string;
-  title?: string;
-  imageURL?: string;
-  rating?: number;
+import { SingleCartItemType } from "../../cart";
+
+interface ProductCommonType {
+  id: number;
+  title: string;
   price?: number;
-  discount?: number;
+  discountPercentage?: number;
+  thumbnail?: string;
+}
+export interface CardProps extends ProductCommonType {
+  rating?: number;
   customStyles?: string;
-  onClick?: (id: string) => void;
+  onClickAddToCart?: (product: SingleCartItemType) => void;
+}
+
+export interface CartTypeProduct extends ProductCommonType {
+  quantity: number;
+  discountedTotal: number;
+  total: number;
 }

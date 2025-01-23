@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import Card from "../card-component/card.component";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { getSearchResults } from "../../api";
 import { QueryTime } from "../../enums";
 import ShimmerPageLoader from "../shimmer-effect/shimmer-effect.component";
@@ -8,6 +8,9 @@ import Title from "../title-component/title.component";
 import Sort from "../sort-component/sort.component";
 import { useState } from "react";
 import Paginator from "../paginator-component/paginator.component";
+import { useAuthedUser } from "../../../../provider";
+import { useCartContext } from "../../../cart/components/cart-container-component/cart-container.component";
+import { SingleCartItemType } from "../../../cart";
 
 export default function SearchResult() {
   const [searchParams] = useSearchParams();
@@ -19,6 +22,9 @@ export default function SearchResult() {
   const [page, setPage] = useState(1);
   const productPerPage = 8;
   const [skippedProduct, setSkippedProduct] = useState(0);
+  const { authenticated } = useAuthedUser();
+  const { carts: currentCartItems, addToCart } = useCartContext();
+  const navigate = useNavigate();
   const {
     data: response,
     isLoading,
@@ -38,6 +44,11 @@ export default function SearchResult() {
     enabled: !!paramValue, // Prevent query from running if paramValue is empty
   });
 
+  const handleAddToCart = (newCartItem: SingleCartItemType) => {
+    if (authenticated) {
+      addToCart(newCartItem, currentCartItems!);
+    } else navigate("/login");
+  };
   if (isLoading) return <ShimmerPageLoader />;
   if (isError)
     return (
@@ -75,8 +86,9 @@ export default function SearchResult() {
                 title={product.title}
                 rating={product.rating}
                 price={product.price}
-                discount={product.discountPercentage}
-                imageURL={product.thumbnail}
+                discountPercentage={product.discountPercentage}
+                thumbnail={product.thumbnail}
+                onClickAddToCart={handleAddToCart}
               />
             ))}
           </div>

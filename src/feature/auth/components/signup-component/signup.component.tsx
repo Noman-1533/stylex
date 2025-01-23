@@ -24,6 +24,7 @@ const SignupSchema = z.object({
 type SignupInput = z.infer<typeof SignupSchema>;
 
 export function SignupForm() {
+  const { user } = useAuthedUser();
   const navigate = useNavigate();
   const {
     register,
@@ -40,6 +41,7 @@ export function SignupForm() {
   const handleSignup = (formData: SignupInput) => {
     console.log(formData);
   };
+  if (user) navigate("/home");
   return (
     <form
       className="form-style"
@@ -95,6 +97,7 @@ export function SignupForm() {
 }
 import authImage from "../../../../assets/auth-image.png";
 import { CustomImage } from "../../../shared";
+import { useAuthedUser } from "../../../../provider";
 export default function Signup() {
   return (
     <div className="flex gap-6 w-full xl:w-4/5 my-10 mx-auto ">

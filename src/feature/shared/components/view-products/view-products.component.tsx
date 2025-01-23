@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getViewData } from "../../api";
 import { QueryTime } from "../../enums";
 import ShimmerPageLoader from "../shimmer-effect/shimmer-effect.component";
@@ -8,10 +8,14 @@ import { transformToCardProps } from "../../utils";
 import Card from "../card-component/card.component";
 import { useEffect, useState } from "react";
 import Paginator from "../paginator-component/paginator.component";
+import { useCartContext } from "../../../cart/components/cart-container-component/cart-container.component";
+import { SingleCartItemType } from "../../../cart";
+import { useAuthedUser } from "../../../../provider";
 
 export default function ViewProducts() {
   const { endpoint } = useParams();
-
+  const { carts: currentCarts, addToCart } = useCartContext();
+  const { authenticated } = useAuthedUser();
   const productPerPage = 20;
   const [skip, setSkip] = useState(0);
   const [page, setPage] = useState(1);
@@ -28,7 +32,13 @@ export default function ViewProducts() {
     setPage(1);
     setSkip(0);
   }, [endpoint]);
-
+  const navigate = useNavigate();
+  const handleAddToCart = (newCart: SingleCartItemType) => {
+    if (authenticated) addToCart(newCart, currentCarts!);
+    else {
+      navigate("/login");
+    }
+  };
   if (viewLoading) return <ShimmerPageLoader />;
   if (viewError)
     return <CustomError message={viewError.message} name={viewError.name} />;
@@ -43,9 +53,10 @@ export default function ViewProducts() {
               id={card.id}
               title={card.title}
               price={card.price}
-              discount={card.discount}
-              imageURL={card.imageURL}
+              discountPercentage={card.discountPercentage}
+              thumbnail={card.thumbnail}
               rating={card.rating}
+              onClickAddToCart={handleAddToCart}
             />
           ))}
         </div>

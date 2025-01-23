@@ -1,10 +1,12 @@
 export interface SingleCartItemType {
   id: number;
-  name: string;
-  image: string;
+  title: string;
   price: number;
-  discount?: number;
   quantity: number;
+  total: number;
+  discountPercentage?: number;
+  discountTotal?: number;
+  thumbnail: string;
 }
 
 export interface SingleCartProps {
@@ -12,3 +14,19 @@ export interface SingleCartProps {
   // onDelete: (id: number) => void;
   // onUpdate: (id: number, value: number) => void;
 }
+
+export type CartTypeAPIResponse = {
+  carts: CartsFromAPI[];
+  limit: number;
+  skip: number;
+  total: number;
+};
+export type CartsFromAPI = {
+  discountedTotal: number;
+  id: number;
+  products: SingleCartItemType[];
+  total: number;
+  totalProducts: number;
+  totalQuantity: number;
+  userId: number;
+};

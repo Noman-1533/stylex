@@ -2,22 +2,17 @@ import Button from "../button-component/button.component";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProductCounterProps } from "../../models";
-import { useContext } from "react";
-import { CartContext } from "../../../cart/components/cart-container-component/cart-container.component";
+import { useCartContext } from "../../../cart/components/cart-container-component/cart-container.component";
 export default function ProductCounter({
   padding,
   count,
   setCount,
   id,
 }: ProductCounterProps) {
-  const context = useContext(CartContext);
+  const context = useCartContext();
   const handleDecrease = () => {
     if (context && id) {
-      context.setCartItem((prev) =>
-        prev.map((item) =>
-          item.id === id ? { ...item, quantity: Math.max(count - 1, 1) } : item
-        )
-      );
+      context.updateCartQuantity(id, context.carts!, Math.max(count - 1, 1));
     }
     if (setCount) {
       setCount((prev) => {
@@ -28,11 +23,7 @@ export default function ProductCounter({
 
   const handleIncrease = () => {
     if (context && id) {
-      context.setCartItem((prev) =>
-        prev.map((item) =>
-          item.id === id ? { ...item, quantity: count + 1 } : item
-        )
-      );
+      context.updateCartQuantity(id, context.carts!, count + 1);
     }
     if (setCount)
       setCount((prev) => {
@@ -53,14 +44,10 @@ export default function ProductCounter({
         type="number"
         value={count}
         onChange={(e) => {
-          const newValue = Math.max(1, parseInt(e.target.value) || 1);
+          const newValue = Math.max(1, parseInt(e.target.value) | 1);
           if (setCount) setCount(newValue);
           if (context && id) {
-            context.setCartItem((prev) =>
-              prev.map((item) =>
-                item.id === id ? { ...item, quantity: newValue } : item
-              )
-            );
+            context.updateCartQuantity(id, context.carts!, newValue);
           }
         }}
         className="w-12 md:w-14 lg:w-16 text-center bg-[#F0F0F0] outline-none font-semibold "

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { getCategoryProduct } from "../api/category-product.api";
 import {
   Card,
@@ -15,11 +15,17 @@ import { useState } from "react";
 import Sidenav from "./side-nav/side-nav.component";
 import { Tag } from "../models";
 import { TransformCommaSeparatedStringToStringArray } from "../utils";
+import { useCartContext } from "../../cart/components/cart-container-component/cart-container.component";
+import { useAuthedUser } from "../../../provider";
+import { SingleCartItemType } from "../../cart";
 
 export default function ProductCategory() {
   const [toggle, setToggle] = useState(false);
   const { categoryName } = useParams();
   const [searchParams] = useSearchParams();
+  const { carts: currentCartItems, addToCart } = useCartContext();
+  const { authenticated } = useAuthedUser();
+  const navigate = useNavigate();
   const { data, isLoading, error } = useQuery({
     queryKey: [`${categoryName}-product`],
     queryFn: () => getCategoryProduct(categoryName as string),
@@ -67,7 +73,11 @@ export default function ProductCategory() {
     // console.log(filterProducts);
     return filterProducts;
   };
-
+  const handleAddToCart = (newCartItem: SingleCartItemType) => {
+    if (authenticated) {
+      addToCart(newCartItem, currentCartItems!);
+    } else navigate("/login");
+  };
   if (data) {
     data.products.forEach((product) => {
       minPrice = Math.min(minPrice, Math.floor(product.price));
@@ -146,9 +156,11 @@ export default function ProductCategory() {
                   key={product.id}
                   id={product.id}
                   title={product.title}
-                  imageURL={product.imageURL}
+                  thumbnail={product.thumbnail}
                   price={product.price}
                   rating={product.rating}
+                  discountPercentage={product.discountPercentage}
+                  onClickAddToCart={handleAddToCart}
                 />
               )
             )}
