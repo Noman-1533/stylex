@@ -72,7 +72,10 @@ export default function SiteIntro() {
             <Chips value={CUSTOMERS.value} text={CUSTOMERS.text} />
           </div>
         </div>
-        <CustomImage imageURL={staticImage} size="w-full " />
+        {/* <CustomImage imageURL={staticImage} size="w-full " /> */}
+        <div>
+          <img src={staticImage} alt="" className="h-full w-full" />
+        </div>
       </div>
       <LogoGallery logos={logos} />
     </div>

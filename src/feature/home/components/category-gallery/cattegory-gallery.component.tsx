@@ -10,19 +10,24 @@ export default function CategoryGallery({
     navigate(`/product/category/${categoryName}`);
   };
   const getColSpan = (index: number) => {
+    // if (screen == "sm" || screen == "md" || screen == "xl") return "col-span-1";
+
     const rowNumber = Math.floor(index / 2);
     const colNumber = index % 2;
     // console.log("index", index, "\nrow=>", rowNumber, " ==  col=>", colNumber);
-    return rowNumber % 2 !== colNumber % 2 ? "lg:col-span-2" : "col-span-1";
+    return rowNumber % 2 !== colNumber % 2
+      ? "lg:col-span-2 xl:col-span-1"
+      : "col-span-1";
   };
 
   return (
-    <div className="bg-[#F0F0F0] flex flex-col items-center p-4 m-6 rounded-3xl cursor-pointer">
+    <div className="bg-[#F0F0F0] flex flex-col items-center p-10 m-2 md:m-0 rounded-3xl cursor-pointer">
       <Title fontSize="text-5xl" font="font-bold" extraClasses="text-center">
         BROWSE BY CATEGORY
       </Title>
       <div
         className="
+        w-full
           grid grid-cols-1 gap-4 m-3
           md:grid-cols-2
           lg:grid-cols-3 lg:gap-6"
@@ -31,7 +36,7 @@ export default function CategoryGallery({
           <div
             key={index}
             className={`
-            ${getColSpan(index)}
+            ${getColSpan(index)} 
             w-full bg-[#FEFEFE] rounded-xl
           `}
           >

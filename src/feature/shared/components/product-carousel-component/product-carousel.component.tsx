@@ -25,7 +25,7 @@ export default function ProductCarousel({
   };
   return (
     <>
-      <div className="flex flex-col gap-5 items-center mt-5 mb-5">
+      <div className="flex flex-col gap-5 items-center mt-5 mb-5 w-full">
         <Title
           font="font-extrabold"
           fontSize="text-4xl md:text-5xl lg:text-6xl"

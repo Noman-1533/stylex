@@ -21,19 +21,20 @@ export default function Home() {
   return (
     <div>
       <SiteIntro />
-      <NewArrival />
-      <TopSelling />
-
-      {(categoryItemsLoading && <ShimmerCarouselLoader />) ||
-        (categoryItemsError && (
-          <CustomError
-            message={categoryItemsError?.message}
-            name={categoryItemsError?.name}
-          />
-        )) ||
-        (categoryGalleryItems && (
-          <CategoryGallery galleryItems={categoryGalleryItems} />
-        ))}
+      <div className="w-full md:w-[90%] mx-auto">
+        <NewArrival />
+        <TopSelling />
+        {(categoryItemsLoading && <ShimmerCarouselLoader />) ||
+          (categoryItemsError && (
+            <CustomError
+              message={categoryItemsError?.message}
+              name={categoryItemsError?.name}
+            />
+          )) ||
+          (categoryGalleryItems && (
+            <CategoryGallery galleryItems={categoryGalleryItems} />
+          ))}
+      </div>
     </div>
   );
 }

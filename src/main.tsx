@@ -1,6 +1,6 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+// import App from "./App.tsx";
 import "./index.css";
 import {
   createBrowserRouter,
@@ -8,29 +8,55 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import {
-  CategoriesPage,
+  Loader,
+  // CategoriesPage,
   ProtectedRoute,
   RouteWrapper,
-  SearchResult,
-  ViewProducts,
+  // SearchResult,
+  // ViewProducts,
 } from "./feature/index.tsx";
 // import Demo from "./demo/demo.tsx";
-import { ProductDetails } from "./feature/product-details/index.tsx";
-import { CartContainer, CartContextProvider } from "./feature/cart/index.tsx";
-import { Login, Signup } from "./feature/auth/index.tsx";
-import Home from "./feature/home/components/home.page.tsx";
-import { ProductCategory } from "./feature/product-category/index.tsx";
+// import { ProductDetails } from "./feature/product-details/index.tsx";
+import {
+  //  CartContainer,
+  CartContextProvider,
+} from "./feature/cart/index.tsx";
+// import { Login, Signup } from "./feature/auth/index.tsx";
+// import Home from "./feature/home/components/home.page.tsx";
+// import { ProductCategory } from "./feature/product-category/index.tsx";
 import AuthProvider from "./provider/auth-provider/auth.provider.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  LazyApp,
+  LazyCartContainer,
+  LazyCategory,
+  LazyHome,
+  LazyLogin,
+  LazyProductCategoryDetails,
+  LazyProductDetails,
+  LazySearchResults,
+  LazySignup,
+  LazyViewProducts,
+} from "./route.ts";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <Suspense fallback={<Loader />}>
+        {" "}
+        <LazyApp />
+      </Suspense>
+    ),
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <Suspense fallback={<Loader />}>
+            {" "}
+            <LazyHome />
+          </Suspense>
+        ),
       },
       {
         path: "/home",
@@ -38,39 +64,76 @@ const router = createBrowserRouter([
       },
       {
         path: "products/:endpoint",
-        element: <ViewProducts />,
+        element: (
+          <Suspense>
+            {" "}
+            <LazyViewProducts />
+          </Suspense>
+        ),
       },
       {
         path: "/search",
-        element: <SearchResult />,
+        element: (
+          <Suspense>
+            {" "}
+            <LazySearchResults />
+          </Suspense>
+        ),
       },
       {
         path: "/details/:id",
-        element: <ProductDetails />,
+        element: (
+          <Suspense>
+            {" "}
+            <LazyProductDetails />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
         element: (
-          <ProtectedRoute>
-            <CartContainer />
-          </ProtectedRoute>
+          <Suspense>
+            <ProtectedRoute>
+              <LazyCartContainer />
+            </ProtectedRoute>
+          </Suspense>
         ),
       },
       {
         path: "/login",
-        element: <Login />,
+        element: (
+          <Suspense>
+            {" "}
+            <LazyLogin />
+          </Suspense>
+        ),
       },
       {
         path: "/sign-up",
-        element: <Signup />,
+        element: (
+          <Suspense>
+            {" "}
+            <LazySignup />
+          </Suspense>
+        ),
       },
       {
         path: "/categories",
-        element: <CategoriesPage />,
+        element: (
+          <Suspense>
+            {" "}
+            <LazyCategory />
+          </Suspense>
+        ),
       },
       {
         path: "product/category/:categoryName",
-        element: <ProductCategory />,
+        element: (
+          <Suspense>
+            {" "}
+            <LazyProductCategoryDetails />
+          </Suspense>
+        ),
       },
     ],
   },

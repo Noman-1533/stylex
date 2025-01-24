@@ -6,6 +6,7 @@ import CustomImage from "./image-component/image.component";
 import Divider from "./divider/divider.component";
 import Footer from "./footer-component/footer.component";
 import Header from "./header-component/header.component";
+import Loader from "./loader-component/loader.component";
 import Paginator from "./paginator-component/paginator.component";
 import Price from "./price-component/price.component";
 import ProductCarousel from "./product-carousel-component/product-carousel.component";
@@ -34,6 +35,7 @@ export {
   Divider,
   Footer,
   Header,
+  Loader,
   Paginator,
   Price,
   ProductCarousel,
