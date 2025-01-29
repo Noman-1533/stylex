@@ -6,7 +6,7 @@ export default function ProductFullDetails({
   product: ProductResponse;
 }) {
   return (
-    <div className="max-w-lg mx-auto my-2 w-full border rounded-lg shadow-md p-6 bg-white">
+    <div className="max-w-lg mx-auto my-2 border rounded-lg shadow-md p-6 bg-white">
       <h2 className="text-xl font-bold mb-4">{product.brand}</h2>
 
       <p
@@ -41,7 +41,7 @@ export default function ProductFullDetails({
       <p className="text-gray-700 mt-2">
         Tag:{" "}
         {product.tags.map((tag, index) => (
-          <span className="font-medium">
+          <span className="font-medium" key={`${tag}-${index}`}>
             {tag + (index !== product.tags.length - 1 ? ", " : "")}
           </span>
         ))}

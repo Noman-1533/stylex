@@ -30,9 +30,9 @@ export default function Search() {
   }, [query, navigate]);
 
   return (
-    <div className="relative m-4">
+    <>
       {/* Search bar for large screens */}
-      <div className="hidden lg:inline-block md:inline-block lg:w-2/5 md:w-1/2">
+      <div className="hidden lg:inline-block  lg:w-[40vw] ">
         <div className="relative">
           <FontAwesomeIcon
             icon={faSearch}
@@ -50,39 +50,38 @@ export default function Search() {
       </div>
 
       {/* Toggleable search for small screens */}
-      <div className="lg:hidden md:hidden">
-        {!isSearchVisible && (
+      {/* <span className="lg:hidden"> */}
+      {!isSearchVisible && (
+        <FontAwesomeIcon
+          onClick={toggleSearch}
+          icon={faSearch}
+          className="text-gray-700 cursor-pointer lg:hidden"
+        />
+      )}
+
+      {isSearchVisible && (
+        <span className="relative w-auto ">
+          <FontAwesomeIcon
+            icon={faSearch}
+            className=" absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"
+          />
+          <input
+            className="w-full  bg-[#F0F0F0] rounded-full pl-7 py-3"
+            type="text"
+            placeholder="Search for product"
+            value={searchInputValue}
+            onChange={(e) => handleChange(e)}
+            onKeyDown={(e) => handleKeyDown(e)}
+          />
           <button
             onClick={toggleSearch}
-            className="p-2 bg-gray-200 rounded-full"
+            className=" absolute right-2 top-1/2 transform -translate-y-1/2 text-red-600"
           >
-            <FontAwesomeIcon icon={faSearch} className="text-gray-400" />
+            ✕
           </button>
-        )}
-
-        {isSearchVisible && (
-          <div className="relative w-1/2 min-w-52">
-            <FontAwesomeIcon
-              icon={faSearch}
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-            />
-            <input
-              className="w-full  bg-[#F0F0F0] rounded-full pl-10 py-3"
-              type="text"
-              placeholder="Search for product"
-              value={searchInputValue}
-              onChange={(e) => handleChange(e)}
-              onKeyDown={(e) => handleKeyDown(e)}
-            />
-            <button
-              onClick={toggleSearch}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-            >
-              ✕
-            </button>
-          </div>
-        )}
-      </div>
-    </div>
+        </span>
+      )}
+      {/* </span> */}
+    </>
   );
 }

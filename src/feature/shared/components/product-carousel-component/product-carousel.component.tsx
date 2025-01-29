@@ -1,3 +1,9 @@
+//carousel
+
+import { useNavigate } from "react-router-dom";
+import { useAuthedUser } from "../../../../provider";
+import { SingleCartItemType } from "../../../cart";
+import { useCartContext } from "../../../cart/components/cart-container-component/cart-container.component";
 import { ProductCarouselProps } from "../../models";
 import Button from "../button-component/button.component";
 import Card from "../card-component/card.component";
@@ -10,28 +16,34 @@ export default function ProductCarousel({
   buttonText = "",
   onClickButton = () => console.log("clicked"),
 }: ProductCarouselProps) {
-  const handleClick = (id: string) => console.log("clicked for id ", id);
+  const { carts: currentCartItems, addToCart } = useCartContext();
+  const { authenticated } = useAuthedUser();
+  const navigate = useNavigate();
+  const handleClick = (newCartItem: SingleCartItemType) => {
+    if (authenticated) addToCart(newCartItem, currentCartItems!);
+    else navigate("/login");
+  };
   return (
     <>
-      <div className="flex flex-col gap-5 items-center mt-5 mb-5">
+      <div className="flex flex-col gap-5 items-center mt-5 mb-5 w-full">
         <Title
           font="font-extrabold"
           fontSize="text-4xl md:text-5xl lg:text-6xl"
         >
           {carouselTitle}
         </Title>
-        <div className="flex flex-wrap  md:gap-3 lg:gap-1 justify-evenly">
-          {products.slice(0, 4).map((product) => {
+        <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-1 justify-evenly">
+          {products.map((product) => {
             return (
               <Card
                 key={product.id}
                 id={product.id}
                 title={product.title}
                 price={product.price}
-                imageURL={product.imageURL}
+                thumbnail={product.thumbnail}
                 rating={product.rating}
-                discount={product.discount}
-                onClick={handleClick}
+                discountPercentage={product.discountPercentage}
+                onClickAddToCart={handleClick}
               />
             );
           })}

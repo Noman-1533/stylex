@@ -16,14 +16,14 @@ export default function Price({
   return (
     <>
       <div
-        className={`flex flex-row gap-1  sm:items-center md:gap-3 ${
+        className={`flex flex-row gap-1 items-center md:gap-3 ${
           extraClasses ? extraClasses : "text-base md:text-lg  lg:text-2xl"
         } `}
       >
         <span className="font-bold">${newPrice.toFixed(2)}</span>
 
         {discount > 0 && (
-          <div className="flex flex-row  sm:items-start gap-1 ">
+          <div className="flex flex-row items-start md:items-center gap-1 ">
             <del className="text-gray-400 ">
               <b>${price.toFixed(2)}</b>
             </del>

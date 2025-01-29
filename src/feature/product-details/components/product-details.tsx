@@ -43,13 +43,7 @@ export default function ProductDetails() {
     <>
       <div className="flex flex-col md:flex-row xl:justify-center">
         <ImageGallery images={data?.images as string[]} />
-        <ShortDetails
-          productTitle={data?.title as string}
-          ProductDetails={data?.description as string}
-          ProductDiscount={data?.discountPercentage as number}
-          ProductPrice={data?.price as number}
-          ProductRating={data?.rating as number}
-        />
+        <ShortDetails product={data!} />
       </div>
       <Tabs tabs={tabs} />
       {data?.category && (

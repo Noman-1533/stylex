@@ -7,7 +7,7 @@ import {
 export interface ImageProps extends React.PropsWithChildren {
   imageURL: string;
   altText?: string;
-  size: string;
+  size?: string;
   rounded?: keyof typeof BorderRound;
   cursor?: string;
   extraClasses?: string;

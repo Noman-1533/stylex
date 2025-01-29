@@ -72,7 +72,10 @@ export default function SiteIntro() {
             <Chips value={CUSTOMERS.value} text={CUSTOMERS.text} />
           </div>
         </div>
-        <CustomImage imageURL={staticImage} size="w-full " />
+        {/* <CustomImage imageURL={staticImage} size="w-full " /> */}
+        <div>
+          <img src={staticImage} alt="" className="h-full w-full" />
+        </div>
       </div>
       <LogoGallery logos={logos} />
     </div>
@@ -93,7 +96,7 @@ function Chips({ value, text }: { value: number; text: string }) {
 }
 
 function LogoGallery({ logos }: { logos: string[] }) {
-  console.log(logos[0]);
+  // console.log(logos[0]);
   return (
     <div className="flex flex-wrap gap-3 items-center justify-around w-full bg-black h-44 md:h-36 lg h:30">
       {logos.map((logo, index) => {
